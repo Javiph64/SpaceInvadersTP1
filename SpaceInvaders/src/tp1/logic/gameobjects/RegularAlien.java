@@ -30,9 +30,8 @@ public class RegularAlien {
 	private int cyclesToMove;
 	private int speed;
 	private Move dir;
-	
-	private int resistance = 2;
-	private int points = 5;
+	private Position pos; //col, row
+	private int life;
 	
 	private AlienManager alienManager;
 
