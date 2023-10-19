@@ -42,9 +42,9 @@ public class AlienManager {
 	 * Initializes the list of destroyer aliens
 	 * @return the initial list of destroyer aliens according to the current level
 	 */
-//	protected  DestroyerAlienList initializeDestroyerAliens() {
-//		//TODO fill your code
-//	}
+	protected  DestroyerAlienList initializeDestroyerAliens() {
+		//TODO fill your code
+	}
 
 	
 	// CONTROL METHODS

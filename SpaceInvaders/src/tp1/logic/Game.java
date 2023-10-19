@@ -7,6 +7,14 @@ public class Game {
 
 	public static final int DIM_X = 9;
 	public static final int DIM_Y = 8;
+	public RegularAlienList regularAlienList;
+	public DestroyerShipList destroyerShipList;
+	public BombList bombList;
+	public AlienManager alienManager;
+	public int cycles;
+	public int points;
+	public Random rand;
+	public UCMShip ship;
 
 	//TODO fill your code
 
@@ -20,13 +28,11 @@ public class Game {
 	}
 
 	public int getCycle() {
-		//TODO fill your code
-		return 0;
+		return cycles;
 	}
 
 	public int getRemainingAliens() {
-		//TODO fill your code
-		return 0;
+		return alienManager.remainingAliens;
 	}
 
 	public String positionToString(int col, int row) {
@@ -35,13 +41,19 @@ public class Game {
 	}
 
 	public boolean playerWin() {
-		//TODO fill your code
-		return false;
+		if(alienManager.remainingAliens == 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public boolean aliensWin() {
-		//TODO fill your code
-		return false;
+		if(ship.lifes == 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public void enableLaser() {
@@ -56,6 +68,10 @@ public class Game {
 	public Level getLevel() {
 		//TODO fill your code
 		return null;
+	}
+	
+	public void update() {
+		//TODO método que actualiza el juego
 	}
 
 }

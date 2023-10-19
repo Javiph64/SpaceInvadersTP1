@@ -26,8 +26,5 @@ public class UCMShip {
 	private int cyclesToMove;
 	private int speed;
 	private Move dir;
-	
-	private int resistance = 3;
-	private UCMLaser shoot;
-	private int damage = 1;
+	private int lifes = 3;
 }

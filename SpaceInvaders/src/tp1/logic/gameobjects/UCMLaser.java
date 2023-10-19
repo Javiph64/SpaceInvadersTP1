@@ -71,12 +71,12 @@ public class UCMLaser {
 	 * @return <code>true</code> if the alien has been attacked by the laser.
 	 */
 
-	/*
+	
 	public boolean performAttack(DestroyerAlien other) {
 		//TODO fill your code
 		return false;
 	}
-	*/
+	
 	
 	//TODO fill your code
 
@@ -109,5 +109,9 @@ public class UCMLaser {
 		return true;
 	}
 	*/
+	
+	public void onDelete() {
+		
+	}
 
 }

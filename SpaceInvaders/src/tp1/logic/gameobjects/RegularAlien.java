@@ -60,8 +60,19 @@ public class RegularAlien {
 	}
 
 	public boolean receiveAttack(UCMLaser laser) {
-		//TODO fill your code
+		if (life > 1) {
+			life--;
+		}
+		else if(life == 1 ) {
+			life--;
+			this.onDelete();
+		}
 		return false;
+	}
+	
+	public void onDelete() {
+		//TODO método que elimina la nave si se ha quedado sin vidas
+		alienManager.remainingAliens--;
 	}
 	
 

@@ -29,5 +29,13 @@ public class DestroyerAlien {
 	private int points = 10;
 	
 	private AlienManager alienManager;
+	
+	public void computerAction() {
+		
+	}
+	
+	public void onDelete() {
+		
+	}
 
 }

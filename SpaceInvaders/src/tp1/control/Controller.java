@@ -15,7 +15,7 @@ import tp1.view.Messages;
 public class Controller {
 
 	private Game game;
-	private Scanner scanner;
+	private Scanner in;
 	private GamePrinter printer;
 
 	public Controller(Game game, Scanner scanner) {
@@ -31,7 +31,7 @@ public class Controller {
 	 */
 	private String[] prompt() {
 		System.out.print(Messages.PROMPT);
-		String line = scanner.nextLine();
+		String line = in.nextLine();
 		String[] words = line.toLowerCase().trim().split("\\s+");
 
 		System.out.println(debug(line));
@@ -58,6 +58,10 @@ public class Controller {
 	 */
 	public void printEndMessage() {
 		System.out.println(printer.endMessage());
+	}
+	
+	public void toString(Game game) {
+		
 	}
 	
 }
