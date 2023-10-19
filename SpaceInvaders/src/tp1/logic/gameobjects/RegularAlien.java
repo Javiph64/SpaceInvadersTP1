@@ -72,7 +72,6 @@ public class RegularAlien {
 	
 	public void onDelete() {
 		//TODO método que elimina la nave si se ha quedado sin vidas
-		alienManager.remainingAliens--;
 	}
 	
 

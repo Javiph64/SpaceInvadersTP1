@@ -2,13 +2,17 @@ package tp1.logic;
 
 import java.util.Random;
 
+import tp1.logic.lists.*;
+import tp1.logic.gameobjects.*;
+
+
 // TODO implementarlo
 public class Game {
 
 	public static final int DIM_X = 9;
 	public static final int DIM_Y = 8;
 	public RegularAlienList regularAlienList;
-	public DestroyerShipList destroyerShipList;
+	public DestroyerAlienList destroyerAlienList;
 	public BombList bombList;
 	public AlienManager alienManager;
 	public int cycles;
@@ -32,7 +36,7 @@ public class Game {
 	}
 
 	public int getRemainingAliens() {
-		return alienManager.remainingAliens;
+		return alienManager.getRemainingAliens();
 	}
 
 	public String positionToString(int col, int row) {
@@ -41,7 +45,7 @@ public class Game {
 	}
 
 	public boolean playerWin() {
-		if(alienManager.remainingAliens == 0) {
+		if(alienManager.getRemainingAliens() == 0) {
 			return true;
 		} else {
 			return false;
@@ -49,7 +53,7 @@ public class Game {
 	}
 
 	public boolean aliensWin() {
-		if(ship.lifes == 0) {
+		if(ship.getLifes() == 0) {
 			return true;
 		} else {
 			return false;

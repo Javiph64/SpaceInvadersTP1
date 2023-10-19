@@ -103,15 +103,14 @@ public class UCMLaser {
 	 * @param weapon the received bomb
 	 * @return always returns <code>true</code>
 	 */
-	/*
+	
+	public void receiveDamage() {
+		//TODO no estoy seguro de qué hay que hacer con este método pero parece necesario
+	}
+	
 	public boolean receiveAttack(Bomb weapon) {
-		receiveDamage(weapon.getDamage());
+		//receiveDamage(weapon.getDamage());
 		return true;
 	}
-	*/
 	
-	public void onDelete() {
-		
-	}
-
 }
