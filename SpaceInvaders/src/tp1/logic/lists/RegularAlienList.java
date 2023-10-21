@@ -14,6 +14,54 @@ public class RegularAlienList {
 	private RegularAlien[] objects;
 	private int num;
 	
+	public RegularAlienList() {
+		//TODO
+	}
+	
+	public int getNum() {
+		return this.num;
+	}
+	
 	//TODO fill your code
+	
+	public void add(RegularAlien alien) {
+		//TODO
+	}
+	
+	private void remove(RegularAlien alien) {
+		//TODO
+	}
+	
+	public int size() {
+		//TODO
+		return 0;
+	}
+	
+	private RegularAlien getObjectInPosition() {
+		//TODO
+		return null;
+	}
+	
+	@Override
+	public String toString() {
+		//TODO
+		return null;
+	}
+	
+	public void computerActions() {
+		//TODO
+	}
+	
+	public void automaticActions() {
+		//TODO
+	}
+	
+	public void removeDead() {
+		//TODO
+	}
+	
+	public void checkAttacks() {
+		//TODO
+	}
 
 }

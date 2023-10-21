@@ -4,6 +4,7 @@ import tp1.logic.gameobjects.DestroyerAlien;
 import tp1.logic.gameobjects.RegularAlien;
 import tp1.logic.lists.DestroyerAlienList;
 import tp1.logic.lists.RegularAlienList;
+import tp1.logic.gameobjects.Ufo;
 
 /**
  * 
@@ -28,7 +29,11 @@ public class AlienManager {
 	}
 	
 	public int getRemainingAliens() {
-		return remainingAliens;
+		return this.remainingAliens;
+	}
+	
+	public void setRemainingAliens(int aliens) {
+		this.remainingAliens = aliens;
 	}
 		
 	// INITIALIZER METHODS
@@ -50,30 +55,12 @@ public class AlienManager {
 		//TODO fill your code
 		return null;
 	}
-
-	
-	// CONTROL METHODS
-		
-	public void shipOnBorder() {
-		if(!onBorder) {
-			onBorder = true;
-			shipsOnBorder = remainingAliens;
-		}
-	}
-
-	public boolean onBorder() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
-	public int getRemainingAliens() {
-		return this.remainingAliens;
-	}
 	
 	public boolean allAllienDead() {
-		if(getRemainingAliens() == 0) {
+		if(getRemainingAliens() < 1) {
 			return true;
-		} else {
+		} 
+		else {
 			return false;
 		}
 	}
@@ -81,7 +68,8 @@ public class AlienManager {
 	public boolean alienDead(RegularAlien alien) {
 		if(alien.getLife() < 1) {
 			return true;
-		} else {
+		} 
+		else {
 			return false;
 		}
 	}
@@ -89,7 +77,8 @@ public class AlienManager {
 	public boolean alienDead(DestroyerAlien alien) {
 		if(alien.getLife() < 1) {
 			return true;
-		} else {
+		} 
+		else {
 			return false;
 		}
 	}
@@ -97,7 +86,8 @@ public class AlienManager {
 	public boolean alienDead(Ufo alien) {
 		if(alien.getLife() < 1) {
 			return true;
-		} else {
+		} 
+		else {
 			return false;
 		}
 	}
@@ -121,17 +111,18 @@ public class AlienManager {
 		//TODO
 	}
 	
-	public boolean shipOnBorder() {
-		//TODO
-		return false;
-	}
+	// CONTROL METHODS
 	
+	public void shipOnBorder() {
+		if(!onBorder) {
+			onBorder = true;
+			shipsOnBorder = remainingAliens;
+		}
+	}
+
 	public boolean onBorder() {
-		//TODO
+		// TODO Auto-generated method stub
 		return false;
 	}
-	
-	
-	
 
 }

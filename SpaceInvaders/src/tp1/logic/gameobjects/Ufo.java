@@ -28,6 +28,9 @@ public class Ufo {
 	private Move dir;
 	private Position pos; //col, row
 	private int life;
+
+	private boolean enabled;
+	private Game game;
 	
 	private AlienManager alienManager;
 	
@@ -41,11 +44,6 @@ public class Ufo {
 	public int getLife() {
 		return this.life;
 	}
-
-	//TODO fill your code
-
-	private boolean enabled;
-	private Game game;
 	
 	//TODO fill your code
 

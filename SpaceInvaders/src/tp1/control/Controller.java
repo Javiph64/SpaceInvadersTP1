@@ -20,7 +20,7 @@ public class Controller {
 
 	public Controller(Game game, Scanner scanner) {
 		this.game = game;
-		this.in = scanner;
+		in = scanner;
 		printer = new GamePrinter(game);
 	}
 

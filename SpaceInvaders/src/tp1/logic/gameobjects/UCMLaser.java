@@ -27,24 +27,31 @@ public class UCMLaser {
 		this.game = game;
 	}
 	
-	public boolean isAlive() {
-		if(this.life == 0) {
-			return false;
-		} else {
-			return true;
-		}
+	public int getLife() {
+		return this.life;
 	}
 	
-	/*
-	public Position isOnPosition() {
-		return this.pos;
-	}
-	*/
+	public boolean isAlive() {
+		if(this.getLife() < 1) {
+			return false;
+		} 
+		else {
+			return true;
+		}
+	}	
+	
+	public boolean isOnPosition(int col, int row) {
+		if(this.pos.getCol() == col && this.pos.getRow() == row ) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}	
 	
 	public Position getPosition() {
 		return this.pos;
 	}
-
 
 	/**
 	 *  Method called when the laser disappears from the board

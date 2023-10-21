@@ -27,23 +27,96 @@ public class RegularAlien {
 	 */
 
 	//TODO fill your code
-	private int cyclesToMove;
-	private int speed;
-	private Move dir;
+	private static final int ARMOR = 2;
 	private Position pos; //col, row
 	private int life;
-	
+	private Game game;
+	private int cyclesToMove;
+	private int speed;
+	//private Move dir;		
 	private AlienManager alienManager;
 	
 	public RegularAlien() {
 		this.speed = 1;
 		Position pos = new Position(0,0); // ver cómo determinamos la posición del alien
 		this.pos = pos;
-		this.life = 3;
+		this.life = ARMOR;
+		this.speed = 1;
 	}
 	
 	public int getLife() {
 		return this.life;
+	}
+	
+	public boolean isAlife() {
+		if(this.getLife() < 1) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+	
+	public void die() {
+		//TODO
+	}
+	
+	public boolean isOnPosition(int col, int row) {
+		if(this.pos.getCol() == col && this.pos.getRow() == row ) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public Position getPosition() {
+		return this.pos;
+	}
+	
+	public int receiveDamage(int damage) {
+		//TODO
+		return 0;
+	}
+	
+	public boolean isOut() {
+		//TODO
+		return false;
+	}
+	
+	public boolean isInFinalRow() {
+		//TODO
+		return false;
+	}
+	
+	private String getSymbol() {
+		//TODO
+		return null;
+	}
+	
+	@Override
+	public String toString() {
+		//TODO
+		return null;
+	}
+	
+	public String getInfo() {
+		//TODO
+		return null;
+	}
+	
+	private String getDescription() {
+		//TODO
+		return null;
+	}
+	
+	public int getDamage() {
+		//TODO
+		return 0;
+	}
+	
+	public void computerAction() {
+		//TODO
 	}
 
 	//TODO fill your code
@@ -85,5 +158,8 @@ public class RegularAlien {
 		//TODO método que elimina la nave si se ha quedado sin vidas
 	}
 	
-
+	private boolean readyToDescend() {
+		//TODO
+		return false;
+	}
 }

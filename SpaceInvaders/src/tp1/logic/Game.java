@@ -11,15 +11,16 @@ public class Game {
 
 	public static final int DIM_X = 9;
 	public static final int DIM_Y = 8;
-
-	public RegularAlienList regularAlienList;
-	public DestroyerAlienList destroyerAlienList;
-	public BombList bombList;
-	public AlienManager alienManager;
-	public int cycles;
-	public int points;
-	public Random rand;
-	public UCMShip ship;
+	
+	private int currentCycle;
+	private Random rand;
+	private Level level;
+	private long seed;
+	private RegularAlienList regularAliens;
+	private UCMShip player;
+	private UCMLaser laser;
+	private boolean doExit;
+	private AlienManager alienManager;
 
 
 	//TODO fill your code
@@ -27,14 +28,29 @@ public class Game {
 	public Game(Level level, long seed) {
 		//TODO fill your code
 	}
+	
+	public Game(Level level, long seed, RegularAlienList regularAliens, UCMShip player, UCMLaser laser, AlienManager alienManager) {
+		this.currentCycle = 0;
+		this.level = level;
+		this.seed = seed;
+		this.regularAliens = regularAliens;
+		this.player = player;
+		this.laser = laser;
+		this.doExit = false;
+		this.alienManager = alienManager;
+	}
 
+	private void initGame() {
+		//TODO
+	}
+	
 	public String stateToString() {
 		//TODO fill your code
 		return null;
 	}
 
 	public int getCycle() {
-		return cycles;
+		return this.currentCycle;
 	}
 
 	public int getRemainingAliens() {
@@ -47,17 +63,19 @@ public class Game {
 	}
 
 	public boolean playerWin() {
-		if(alienManager.getRemainingAliens() == 0) {
+		if(alienManager.getRemainingAliens() < 1) {
 			return true;
-		} else {
+		} 
+		else {
 			return false;
 		}
 	}
 
 	public boolean aliensWin() {
-		if(ship.getLifes() == 0) {
+		if(player.getLife() < 1) {
 			return true;
-		} else {
+		} 
+		else {
 			return false;
 		}
 	}
@@ -67,17 +85,98 @@ public class Game {
 	}
 
 	public Random getRandom() {
-		//TODO fill your code
-		return null;
+		return this.rand;
 	}
 
 	public Level getLevel() {
-		//TODO fill your code
-		return null;
+		return this.level;
 	}
 	
 	public void update() {
 		//TODO método que actualiza el juego
 	}
 
+	public void reset() {
+		//TODO
+	}
+	
+	public void addObject() {
+		//TODO
+	}
+	
+	public void positionToString() {
+		//TODO
+	}
+	
+	public boolean isFinished() {
+		//TODO
+		return false;
+	}
+	
+	private void removeDead() {
+		//TODO
+	}
+	
+	private void computerActions() {
+		//TODO
+	}
+	
+	private void laserAutomaticMove() {
+		//TODO
+	}
+	
+	private void automaticMoves() {
+		//TODO
+	}
+	
+	public void exit() {
+		//TODO
+	}
+	
+	public String infoToString() {
+		//TODO
+		return null;
+	}
+	
+	public void listOfShips() {
+		//TODO
+	}
+	
+	public void move() {
+		//TODO
+	}
+	
+	public void shootLaser() {
+		//TODO
+	}
+	
+	public void shockWave() {
+		//TODO
+	}
+	
+	public void receivePoints() {
+		//TODO
+	}
+	
+	public int getNumCyclesToMoveOneCell() {
+		return 0;
+	}
+	
+	private boolean haveLanded() {
+		//TODO
+		return false;
+	}
+	
+	public int getRemainignAliens() {
+		return this.alienManager.getRemainingAliens();
+	}
+	
+	public void performAttack() {
+		//TODO
+	}
+	
+	public void checkAttackTol() {
+		//TODO
+	}
+	
 }

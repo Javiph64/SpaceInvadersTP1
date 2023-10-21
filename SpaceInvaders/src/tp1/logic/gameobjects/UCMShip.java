@@ -47,22 +47,30 @@ public class UCMShip {
 		return this.life;
 	}
 	
+	public void setLife(int life) {
+		this.life = life;
+	}
+	
 	public void die() {
 		//TODO 
 	}
 	
-	/*
-	public Position isOnPosition() {
-		return this.pos;
+	public boolean isOnPosition(int col, int row) {
+		if(this.pos.getCol() == col && this.pos.getRow() == row) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
-	*/
 	
 	public Position getPosition() {
 		return this.pos;
 	}
 	
 	public void receiveDamage(int damage) {
-		this.life = this.life - damage;
+		int life = this.getLife() - damage;
+		this.life = life;
 	}
 	
 	public boolean isOut() {
@@ -76,6 +84,7 @@ public class UCMShip {
 	
 	private String getSymbol() {
 		//TODO
+		return null;
 	}
 	
 	@Override
@@ -140,25 +149,4 @@ public class UCMShip {
 	private void weaponAttack() {
 		//TODO
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	private int cyclesToMove;
-	private int speed;
-	private Move dir;
-	private int lifes = 3;
-	
-	public int getLifes() {
-		return lifes;
-	}
-
 }
