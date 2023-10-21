@@ -26,6 +26,10 @@ public class AlienManager {
 		this.game = game;
 		this.remainingAliens = 0;
 	}
+	
+	public int getRemainingAliens() {
+		return remainingAliens;
+	}
 		
 	// INITIALIZER METHODS
 	
@@ -42,8 +46,9 @@ public class AlienManager {
 	 * Initializes the list of destroyer aliens
 	 * @return the initial list of destroyer aliens according to the current level
 	 */
-	protected  DestroyerAlienList initializeDestroyerAliens() {
+	protected DestroyerAlienList initializeDestroyerAliens() {
 		//TODO fill your code
+		return null;
 	}
 
 	

@@ -9,4 +9,8 @@ public class Bomb {
 	public void onDelete() {
 		
 	}
+	
+	public void getDamage() {
+		
+	}
 }

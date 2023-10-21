@@ -151,4 +151,14 @@ public class UCMShip {
 	
 	
 	
+
+	private int cyclesToMove;
+	private int speed;
+	private Move dir;
+	private int lifes = 3;
+	
+	public int getLifes() {
+		return lifes;
+	}
+
 }
