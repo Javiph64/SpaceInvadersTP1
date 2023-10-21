@@ -26,11 +26,21 @@ public class Ufo {
 	private int cyclesToMove;
 	private int speed;
 	private Move dir;
-	
-	private int resistance = 1;
-	private int points = 25;
+	private Position pos; //col, row
+	private int life;
 	
 	private AlienManager alienManager;
+	
+	public Ufo() {
+		this.speed = 1;
+		Position pos = new Position(0,0); // ver cómo determinamos la posición del alien
+		this.pos = pos;
+		this.life = 3;
+	}
+	
+	public int getLife() {
+		return this.life;
+	}
 
 	//TODO fill your code
 

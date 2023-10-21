@@ -34,6 +34,17 @@ public class RegularAlien {
 	private int life;
 	
 	private AlienManager alienManager;
+	
+	public RegularAlien() {
+		this.speed = 1;
+		Position pos = new Position(0,0); // ver cómo determinamos la posición del alien
+		this.pos = pos;
+		this.life = 3;
+	}
+	
+	public int getLife() {
+		return this.life;
+	}
 
 	//TODO fill your code
 

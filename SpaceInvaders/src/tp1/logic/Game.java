@@ -7,14 +7,15 @@ public class Game {
 
 	public static final int DIM_X = 9;
 	public static final int DIM_Y = 8;
-	public RegularAlienList regularAlienList;
-	public DestroyerShipList destroyerShipList;
-	public BombList bombList;
-	public AlienManager alienManager;
-	public int cycles;
-	public int points;
-	public Random rand;
-	public UCMShip ship;
+	
+	private RegularAlienList regularAlienList;
+	private DestroyerShipList destroyerShipList;
+	private BombList bombList;
+	private AlienManager alienManager;
+	private int cycles;
+	private int points;
+	private Random rand;
+	private UCMShip ship;
 
 	//TODO fill your code
 

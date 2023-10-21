@@ -1,8 +1,8 @@
 package tp1.logic;
 
-//import tp1.logic.gameobjects.DestroyerAlien;
+import tp1.logic.gameobjects.DestroyerAlien;
 import tp1.logic.gameobjects.RegularAlien;
-//import tp1.logic.lists.DestroyerAlienList;
+import tp1.logic.lists.DestroyerAlienList;
 import tp1.logic.lists.RegularAlienList;
 
 /**
@@ -60,5 +60,73 @@ public class AlienManager {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	public int getRemainingAliens() {
+		return this.remainingAliens;
+	}
+	
+	public boolean allAllienDead() {
+		if(getRemainingAliens() == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean alienDead(RegularAlien alien) {
+		if(alien.getLife() < 1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean alienDead(DestroyerAlien alien) {
+		if(alien.getLife() < 1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean alienDead(Ufo alien) {
+		if(alien.getLife() < 1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean haveLanded() {
+		//TODO
+		return false;
+	}
+	
+	public boolean finalRowReached() {
+		//TODO
+		return false;
+	}
+	
+	public boolean readyToDescend() {
+		//TODO
+		return false;
+	}
+	
+	public void decreaseOnBorder() {
+		//TODO
+	}
+	
+	public boolean shipOnBorder() {
+		//TODO
+		return false;
+	}
+	
+	public boolean onBorder() {
+		//TODO
+		return false;
+	}
+	
+	
+	
 
 }

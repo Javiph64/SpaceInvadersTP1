@@ -23,12 +23,21 @@ public class DestroyerAlien {
 	private int cyclesToMove;
 	private int speed;
 	private Move dir;
-	
-	private int resistance = 1;
-	private UCMLaser bomb;
-	private int points = 10;
+	private Position pos; //col, row
+	private int life;
 	
 	private AlienManager alienManager;
+	
+	public DestroyerAlien() {
+		this.speed = 1;
+		Position pos = new Position(0,0); // ver cómo determinamos la posición del alien
+		this.pos = pos;
+		this.life = 3;
+	}
+	
+	public int getLife() {
+		return this.life;
+	}
 	
 	public void computerAction() {
 		
