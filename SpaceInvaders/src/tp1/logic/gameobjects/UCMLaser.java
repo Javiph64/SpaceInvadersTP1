@@ -12,8 +12,38 @@ import tp1.logic.Position;
 public class UCMLaser {
 	
 	//TODO fill your code
+	public static final int DAMAGE = 3;
+	private static final int ARMOUR = 0; // ¿el láser tiene armadura?
+	
+	private Position pos;
+	private int life;
 	private Move dir;
 	private Game game;
+	
+	public void UCMLaser(Game game) {
+		Position pos = new Position(4,7); // ver cómo determinamos la posición del láser
+		this.pos = pos;
+		this.life = 1;
+		this.game = game;
+	}
+	
+	public boolean isAlive() {
+		if(this.life == 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
+	/*
+	public Position isOnPosition() {
+		return this.pos;
+	}
+	*/
+	
+	public Position getPosition() {
+		return this.pos;
+	}
 
 
 	/**
@@ -104,13 +134,15 @@ public class UCMLaser {
 	 * @return always returns <code>true</code>
 	 */
 	
+
 	public void receiveDamage() {
 		//TODO no estoy seguro de qué hay que hacer con este método pero parece necesario
 	}
-	
+
 	public boolean receiveAttack(Bomb weapon) {
 		//receiveDamage(weapon.getDamage());
 		return true;
 	}
+
 	
 }

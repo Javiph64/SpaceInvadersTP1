@@ -11,6 +11,7 @@ public class Game {
 
 	public static final int DIM_X = 9;
 	public static final int DIM_Y = 8;
+
 	public RegularAlienList regularAlienList;
 	public DestroyerAlienList destroyerAlienList;
 	public BombList bombList;
@@ -19,6 +20,7 @@ public class Game {
 	public int points;
 	public Random rand;
 	public UCMShip ship;
+
 
 	//TODO fill your code
 
