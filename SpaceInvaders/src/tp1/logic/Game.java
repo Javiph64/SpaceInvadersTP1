@@ -44,6 +44,22 @@ public class Game {
 		//TODO
 	}
 	
+	public UCMShip getUCMShip() {
+		return this.player;
+	}
+	
+	public void setUCMShip(UCMShip player) {
+		this.player = player;
+	}
+	
+	public AlienManager getAlienManager() {
+		return this.alienManager;
+	}
+	
+	public void setAlienManager(AlienManager alienManager) {
+		this.alienManager = alienManager;
+	}
+	
 	public String stateToString() {
 		//TODO fill your code
 		return null;

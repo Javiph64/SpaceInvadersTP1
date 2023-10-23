@@ -25,7 +25,15 @@ public class GamePrinter {
 		
 	public GamePrinter(Game game) {
 		this.game = game;
-	}	
+	}
+	
+	public Game getGame() {
+		return this.game;
+	}
+	
+	public void printShip() {
+		System.out.println(this.game.getUCMShip().toString());
+	}
 	
 	/**
 	 * Builds a string that represent the game status

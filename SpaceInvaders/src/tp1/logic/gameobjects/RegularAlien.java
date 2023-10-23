@@ -11,54 +11,114 @@ import tp1.logic.Position;
  *
  */
 public class RegularAlien {
-	
-	/*
-	 *Comportamiento: Se desplaza horizontalmente. Cuando una nave alienígena llega al borde 
-	 *del tablero, todas las naves se desplazarán una casilla hacia abajo y su movimiento lateral 
-	 *se realizará hacia el borde opuesto, tal y como ocurre en el juego original. El 
-	 *desplazamiento vertical se realizará en el ciclo siguiente al de haber alcanzado el borde 
-	 *del tablero, independientemente de la velocidad establecida por la dificultad del juego.
-	 *
-	 *Resistencia: 2 puntos de daño.
-	 *
-	 *Disparo: Esta nave no realiza disparos.
-	 *
-	 *Puntos: 5 puntos al ser destruida.
-	 */
 
-	//TODO fill your code
+	// atributos
+	
 	private static final int ARMOR = 2;
+	
 	private Position pos; //col, row
 	private int life;
 	private Game game;
 	private int cyclesToMove;
 	private int speed;
-	//private Move dir;		
+	private Move dir;		
 	private AlienManager alienManager;
+	private boolean alive;
+	private String symbol;
 	
-	public RegularAlien() {
-		this.speed = 1;
+	// constructor
+	
+	public RegularAlien(Game game, AlienManager alienManager) {
+		this.game = game;
 		Position pos = new Position(0,0); // ver cómo determinamos la posición del alien
 		this.pos = pos;
 		this.life = ARMOR;
-		this.speed = 1;
+		this.dir = Move.NONE;
+		this.alienManager = alienManager;
+		this.alive = true;
+		this.symbol = "R";
+	}
+	
+	// getters y setters
+	
+	public Position getPosition() {
+		return this.pos;
+	}
+	
+	public void setPosition(Position pos) {
+		this.pos = pos;
+	}
+	
+	public void setPosition(int x, int y) {
+		this.pos.setCol(x);
+		this.pos.setRow(y);
 	}
 	
 	public int getLife() {
 		return this.life;
+	}	
+
+	public void setLife(int life) {
+		this.life = life;
 	}
 	
-	public boolean isAlife() {
-		if(this.getLife() < 1) {
-			return false;
-		}
-		else {
-			return true;
-		}
+	public Game getGame() {
+		return this.game;
+	}
+	
+	public int getCyclesToMove() {
+		return this.cyclesToMove;
+	}
+	
+	public void setCyclesToMove(int cycles) {
+		this.cyclesToMove = cycles;
+	}
+	
+	public int getSpeed() {
+		return this.speed;
+	}
+	
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+	
+	public boolean isAlive() {
+		return this.alive;
 	}
 	
 	public void die() {
-		//TODO
+		this.alive = false;
+	}
+	
+	public Move getDir() {
+		return this.dir;
+	}
+	
+	public void performMovement(Move move) {
+		this.dir = move;
+	}
+	
+	public AlienManager getAlienManager() {
+		return this.alienManager;
+	}
+	
+	private String getSymbol() {
+		return this.symbol;
+	}
+	
+	@Override
+	public String toString() {
+		return this.getSymbol() + "[0" + this.getLife() + "]";
+	}
+		
+	// otros métodos
+	
+	public void increaseCycle() {
+		this.cyclesToMove++;
+	}
+	
+	public void decreaseCycle() {
+		this.cyclesToMove--;
 	}
 	
 	public boolean isOnPosition(int col, int row) {
@@ -68,10 +128,6 @@ public class RegularAlien {
 		else {
 			return false;
 		}
-	}
-	
-	public Position getPosition() {
-		return this.pos;
 	}
 	
 	public int receiveDamage(int damage) {
@@ -87,18 +143,7 @@ public class RegularAlien {
 	public boolean isInFinalRow() {
 		//TODO
 		return false;
-	}
-	
-	private String getSymbol() {
-		//TODO
-		return null;
-	}
-	
-	@Override
-	public String toString() {
-		//TODO
-		return null;
-	}
+	}	
 	
 	public String getInfo() {
 		//TODO
@@ -133,11 +178,6 @@ public class RegularAlien {
 		
 	}
 
-	private void performMovement(Move dir) {
-		//TODO fill your code
-		
-	}
-
 	private boolean isInBorder() {
 		//TODO fill your code
 		return false;
@@ -162,4 +202,5 @@ public class RegularAlien {
 		//TODO
 		return false;
 	}
+	
 }
