@@ -130,9 +130,11 @@ public class RegularAlien {
 		}
 	}
 	
-	public int receiveDamage(int damage) {
-		//TODO
-		return 0;
+	public void receiveDamage(int damage) {
+		this.life = this.life - damage;
+		if(this.getLife() < 1) {
+			die();
+		}
 	}
 	
 	public boolean isOut() {
@@ -172,10 +174,14 @@ public class RegularAlien {
 	public void automaticMove() {
 		//TODO fill your code
 	}
+	
+	private boolean readyToDescend() {
+		//TODO
+		return false;
+	}
 
 	private void descent() {
-		//TODO fill your code
-		
+		//TODO fill your code		
 	}
 
 	private boolean isInBorder() {
@@ -196,11 +202,6 @@ public class RegularAlien {
 	
 	public void onDelete() {
 		//TODO método que elimina la nave si se ha quedado sin vidas
-	}
-	
-	private boolean readyToDescend() {
-		//TODO
-		return false;
 	}
 	
 }

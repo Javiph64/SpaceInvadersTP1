@@ -14,7 +14,7 @@ public class UCMLaser {
 	// atributos 
 	
 	public static final int DAMAGE = 3;
-	private static final int ARMOR = 1; // ¿el láser tiene armadura?
+	private static final int ARMOR = 1;
 	
 	private Position pos;
 	private int life;
@@ -95,7 +95,11 @@ public class UCMLaser {
 	
 	public void enableLaser() {
 		this.enable = true;
-	}		
+	}
+	
+	public void disableLaser() {
+		this.enable = false;
+	}
 		
 	// otros métodos
 	
