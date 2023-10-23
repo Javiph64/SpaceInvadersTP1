@@ -8,6 +8,16 @@ import tp1.logic.Game;
 import tp1.logic.Level;
 import tp1.view.Messages;
 import static tp1.view.Messages.error;
+import tp1.view.*;
+import tp1.logic.*;
+
+import tp1.logic.gameobjects.*;
+
+/*
+ * Nivel easy, 4 naves comunes (1 fila), 2 naves destructoras, frec. disparo = 0,1, velocidad = 3, Ovni = 0,5
+ * Nivel hard, 8 naves comunes (2 filas), 2 naves destructoras, frec. disparo = 0,3, velocidad = 3, Ovni = 0,2
+ * Nivel insane, 8 naves comunes (2 filas), 4 naves destructoras, frec. disparo = 0,5, velocidad = 3, Ovni = 0,1
+ */
 
 
 public class Main {
@@ -50,11 +60,26 @@ public class Main {
 		
 					System.out.println(String.format(Messages.CONFIGURED_LEVEL, level.name()));
 					System.out.println(String.format(Messages.CONFIGURED_SEED, seed));
-		
+					
 					Game game = new Game(level, seed);
 					Scanner scanner = new Scanner(System.in);
 					Controller controller = new Controller(game, scanner);
 					controller.run();
+					/*
+					Game game2 = new Game(level, seed);
+					UCMShip player = new UCMShip(game);		
+					AlienManager alienManager = new AlienManager(game2, level);
+					
+					game2.setUCMShip(player);
+					game2.setAlienManager(alienManager);
+					
+					GamePrinter printer = new GamePrinter(game2);
+					printer.printShip();
+					System.out.println(printer.getGame().getUCMShip().toString());
+					System.out.println(game2.getAlienManager().getRemainingAliens());
+					System.out.println(printer.toString());
+					*/
+					
 		
 				} catch (NumberFormatException nfe) {
 					System.out.println(String.format(Messages.SEED_NOT_A_NUMBER_ERROR, seedParam));

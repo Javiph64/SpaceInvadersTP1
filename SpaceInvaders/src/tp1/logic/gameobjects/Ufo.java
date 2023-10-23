@@ -23,22 +23,23 @@ public class Ufo {
  * Puntos: 25 puntos al ser destruido.
  */
 	
-	private int cyclesToMove;
-	private int speed;
-	private Move dir;
+	private static final int ARMOR = 1;
 	private Position pos; //col, row
 	private int life;
-
-	private boolean enabled;
 	private Game game;
-	
+	private int cyclesToMove;
+	private int speed;	
+	private Move dir;	
 	private AlienManager alienManager;
+	private boolean enabled;
 	
-	public Ufo() {
+	public Ufo(Game game) {
+		this.game = game;
 		this.speed = 1;
 		Position pos = new Position(0,0); // ver cómo determinamos la posición del alien
 		this.pos = pos;
-		this.life = 3;
+		this.life = ARMOR;
+		this.enabled = true;
 	}
 	
 	public int getLife() {
@@ -54,7 +55,7 @@ public class Ufo {
 	}
 	
 	private void enable() {
-		//TODO fill your code
+		this.enabled = true;
 	}
 
 	public void onDelete() {

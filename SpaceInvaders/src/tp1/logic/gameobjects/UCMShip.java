@@ -3,69 +3,105 @@ package tp1.logic.gameobjects;
 import tp1.logic.Game;
 import tp1.logic.Move;
 import tp1.logic.Position;
+import tp1.logic.gameobjects.UCMLaser;
 
 public class UCMShip {
-	
-	/*
-	 * 
-	 * Comportamiento: Se mueve horizontalmente y realiza disparos. Inicialmente se coloca en 
-	 * la casilla (4,7).
-	 * 
-	 * Resistencia: 3 puntos de daño.
-	 * 
-	 * Disparo: Lanza un láser. No puede haber más de un láser en el tablero.
-	 * El láser avanzará verticalmente de forma que hasta que no haya alcanzado una nave 
-	 * alienígena, una bomba, un ovni o haya llegado al final del tablero, no se podrá disparar 
-	 * uno nuevo. Si el jugador realiza el disparo, el láser tendrá, en el momento de realizar la
-	 * acción, la misma coordenada que UCMShip. Sin embargo, su trayectoria se actualizará en la 
-	 * acción update del mismo ciclo.
-	 * 
-	 * Daño: El comportamiento estándar del disparo ocasiona un punto de daño en la nave impactada.
-	 */
+		
+	// atributos 
 	
 	private static final int ARMOR = 3;
-	private static final int DAMAGE = 1;
 	
 	private Position pos; //col, row
 	private int life;
 	private Game game;
 	private boolean canShoot;
+	private String symbol;
+	private boolean alive;
+	private UCMLaser laser;
+	private Move dir;
 	
-	public UCMShip(Game game) {
+	// constructor
+	
+	public UCMShip(Game game, UCMLaser laser) {
 		Position pos = new Position(4,7);
 		this.pos = pos;
-		this.life = 3;
+		this.life = ARMOR;
 		this.canShoot = true;
+		this.symbol = "^__^";
 		this.game = game;
+		this.laser = laser;
+		this.alive = true;
+		this.dir = Move.NONE;
 	}
 	
-	public boolean isAlive() {
-		return false;
+	// getters y setters
+	
+	public Position getPosition() {
+		return this.pos;
+	}
+	
+	public void setPosition(Position pos) {
+		this.pos = pos;
+	}
+	
+	public void setPosition(int x, int y) {
+		this.pos.setCol(x);
+		this.pos.setRow(y);
 	}
 	
 	public int getLife() {
 		return this.life;
-	}
-	
+	}	
+
 	public void setLife(int life) {
 		this.life = life;
 	}
 	
-	public void die() {
-		//TODO 
+	public Game getGame() {
+		return this.game;
 	}
+	
+	public UCMLaser getLaser() {
+		return this.laser;
+	}
+	
+	public boolean canShoot() {
+		return canShoot;
+	}
+	
+	public void setCanShoot() {
+		this.canShoot = !this.canShoot;
+	}
+	
+	private String getSymbol() {
+		return this.symbol;
+	}
+	
+	@Override
+	public String toString() {
+		return this.getSymbol();
+	}
+	
+	public boolean isAlive() {
+		return this.alive;
+	}
+	
+	public void die() {
+		this.alive = false;
+	}
+	
+	public Move getDir() {
+		return this.dir;
+	}
+	
+	public void performMovement(Move move) {
+		this.dir = move;
+	}
+	
+	// otros métodos	
 	
 	public boolean isOnPosition(int col, int row) {
-		if(this.pos.getCol() == col && this.pos.getRow() == row) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-	
-	public Position getPosition() {
-		return this.pos;
+		return this.pos.getCol() == col && this.pos.getRow() == row;
 	}
 	
 	public void receiveDamage(int damage) {
@@ -76,26 +112,15 @@ public class UCMShip {
 	public boolean isOut() {
 		//TODO
 		return false;
-	}
-	
-	public void performMovement() {
-		//TODO
-	}
-	
-	private String getSymbol() {
-		//TODO
-		return null;
-	}
-	
-	@Override
-	public String toString() {
-		//TODO
-		return null;
-	}
+	}	
 	
 	public String stateToString() {
-		//TODO
-		return null;
+		if(isAlive()) {
+			return "Alive";
+		}
+		else {
+			return "Dead";
+		}
 	}
 	
 	public String getInfo() {
@@ -109,7 +134,8 @@ public class UCMShip {
 	}
 	
 	public int getDamage() {
-		return this.DAMAGE;
+		//TODO
+		return 0;
 	}
 	
 	public void onDelete() {
@@ -127,11 +153,7 @@ public class UCMShip {
 	public boolean move(Move move) {
 		//TODO
 		return false;
-	}
-	
-	public void enableLaser() {
-		//TODO
-	}
+	}	
 	
 	public boolean shootLaser() {
 		//TODO
@@ -149,4 +171,5 @@ public class UCMShip {
 	private void weaponAttack() {
 		//TODO
 	}
+	
 }

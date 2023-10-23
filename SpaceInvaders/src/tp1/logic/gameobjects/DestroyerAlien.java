@@ -19,20 +19,21 @@ public class DestroyerAlien {
 	 * 
 	 * Puntos: 10 puntos al ser destruida.
 	 */
-	
-	private int cyclesToMove;
-	private int speed;
-	private Move dir;
+	private static final int ARMOR = 1;
 	private Position pos; //col, row
 	private int life;
-	
+	private Game game;
+	private int cyclesToMove;
+	private int speed;	
+	private Move dir;	
 	private AlienManager alienManager;
 	
-	public DestroyerAlien() {
+	public DestroyerAlien(Game game) {
+		this.game = game;
 		this.speed = 1;
 		Position pos = new Position(0,0); // ver cómo determinamos la posición del alien
 		this.pos = pos;
-		this.life = 3;
+		this.life = ARMOR;
 	}
 	
 	public int getLife() {
