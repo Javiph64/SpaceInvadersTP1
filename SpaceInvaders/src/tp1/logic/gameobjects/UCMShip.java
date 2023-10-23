@@ -104,11 +104,6 @@ public class UCMShip {
 		return this.pos.getCol() == col && this.pos.getRow() == row;
 	}
 	
-	public void receiveDamage(int damage) {
-		int life = this.getLife() - damage;
-		this.life = life;
-	}
-	
 	public boolean isOut() {
 		//TODO
 		return false;
@@ -133,9 +128,11 @@ public class UCMShip {
 		return null;
 	}
 	
-	public int getDamage() {
-		//TODO
-		return 0;
+	public void receiveDamage(int damage) {
+		this.life = this.life - damage;
+		if(this.getLife() < 1) {
+			die();
+		}
 	}
 	
 	public void onDelete() {

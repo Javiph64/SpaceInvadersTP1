@@ -6,19 +6,111 @@ import tp1.logic.Position;
 
 public class Bomb {
 	
-	public static final int DAMAGE = 3;
+	// atributos
+	
+	public static final int DAMAGE = 1;
+	private static final int ARMOR = 1;
 	
 	private Position pos; //col, row
 	private int life;
 	private Game game;
-	private String symbol = "*";
+	private String symbol;
 	private boolean alive;
+	private Move dir;
+	private boolean enabled;
+	
+	// constructor
+	
+	public Bomb(Game game) {
+		Position pos = new Position(4,7); // ver cómo determinamos la posición del láser
+		this.pos = pos;
+		this.life = ARMOR;
+		this.game = game;
+		this.symbol = "*";
+		this.alive = true;
+		this.dir = Move.NONE;
+		this.enabled = true;
+	}
+	
+	// getters y setters
+	
+	public Position getPosition() {
+		return this.pos;
+	}
+	
+	public void setPosition(Position pos) {
+		this.pos = pos;
+	}
+	
+	public void setPosition(int x, int y) {
+		this.pos.setCol(x);
+		this.pos.setRow(y);
+	}
+	
+	public int getLife() {
+		return this.life;
+	}	
+
+	public void setLife(int life) {
+		this.life = life;
+	}
+	
+	public Game getGame() {
+		return this.game;
+	}
+	
+	private String getSymbol() {
+		return this.symbol;
+	}
+	
+	@Override
+	public String toString() {
+		return this.getSymbol();
+	}	
+	
+	public boolean isAlive() {
+		return this.alive;
+	}
+	
+	private void die() {
+		this.alive = false;
+	}
+	
+	public Move getDir() {
+		return this.dir;
+	}
+	
+	public void performMovement(Move move) {
+		this.dir = move;
+	}	
+	
+	public boolean enabled() {
+		return this.enabled;
+	}
+	
+	public void enableBomb() {
+		this.enabled = true;
+	}
+	
+	public void disableBomb() {
+		this.enabled = false;
+	}
+	
+	// otros métodos
 	
 	public void onDelete() {
 		
 	}
 	
-	public int getDamage() {
-		return this.DAMAGE;
+	public void automaticMove () {
+		performMovement(dir);
+		if(isOut())
+			die();
 	}
+	
+	private boolean isOut() {
+		//TODO fill your code
+		return false;
+	}
+	
 }
