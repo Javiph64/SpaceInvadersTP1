@@ -19,6 +19,7 @@ public class UCMShip {
 	private boolean alive;
 	private UCMLaser laser;
 	private Move dir;
+	private int speed;
 	
 	// constructor
 	
@@ -96,6 +97,14 @@ public class UCMShip {
 	
 	public void performMovement(Move move) {
 		this.dir = move;
+	}
+	
+	public int getSpeed() {
+		return this.speed;
+	}
+	
+	public void setSpeed(int speed) {
+		this.speed = speed;
 	}
 	
 	// otros métodos	

@@ -7,24 +7,11 @@ import tp1.logic.Position;
 
 public class DestroyerAlien {
 	
-	/*
-	 * Comportamiento: El movimiento es el mismo que la nave común.
-	 * 
-	 * Resistencia: 1 punto de daño.
-	 * 
-	 * Disparo: Deja caer una bomba. El movimiento de la bomba es vertical en el sentido
-	 * hacia donde se encuentra UCMShip.
-	 * 
-	 * Daño: 1 punto de daño.
-	 * 
-	 * Puntos: 10 puntos al ser destruida.
-	 */
-	
 	// atributos
 	
 	private static final int ARMOR = 1;
 	
-	private Position pos; //col, row
+	private Position pos;
 	private int life;
 	private Game game;
 	private int cyclesToMove;
@@ -39,8 +26,6 @@ public class DestroyerAlien {
 	
 	public DestroyerAlien(Game game, AlienManager alienManager) {
 		this.game = game;
-		Position pos = new Position(0,0); // ver cómo determinamos la posición del alien
-		this.pos = pos;
 		this.life = ARMOR;
 		this.dir = Move.NONE;
 		this.alienManager = alienManager;
@@ -119,6 +104,19 @@ public class DestroyerAlien {
 	public String toString() {
 		return this.getSymbol() + "[0" + this.getLife() + "]";
 	}
+	
+	public boolean canShoot() {
+		return this.canShoot;
+	}
+	
+	public void enableShoot() {
+		this.canShoot = true;
+	}
+	
+	public void disableShoot() {
+		this.canShoot = false;
+	}
+	
 	// otros métodos
 	
 	public void increaseCycle() {
@@ -129,13 +127,12 @@ public class DestroyerAlien {
 		this.cyclesToMove--;
 	}
 	
+	public boolean isOnPosition(Position pos) {
+		return this.pos == pos;
+	}
+	
 	public boolean isOnPosition(int col, int row) {
-		if(this.pos.getCol() == col && this.pos.getRow() == row ) {
-			return true;
-		}
-		else {
-			return false;
-		}
+		return this.pos.getCol() == col && this.pos.getRow() == row;
 	}
 	
 	public void receiveDamage(int damage) {

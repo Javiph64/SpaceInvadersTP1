@@ -35,6 +35,10 @@ public class GamePrinter {
 		System.out.println(this.game.getUCMShip().toString());
 	}
 	
+	public void printLaser() {
+		System.out.println(this.game.getLaser().toString());
+	}
+	
 	/**
 	 * Builds a string that represent the game status
 	 * 

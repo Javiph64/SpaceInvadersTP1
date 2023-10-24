@@ -22,8 +22,6 @@ public class Bomb {
 	// constructor
 	
 	public Bomb(Game game) {
-		Position pos = new Position(4,7); // ver cómo determinamos la posición del láser
-		this.pos = pos;
 		this.life = ARMOR;
 		this.game = game;
 		this.symbol = "*";
