@@ -16,7 +16,7 @@ public class RegularAlien {
 	
 	private static final int ARMOR = 2;
 	
-	private Position pos; //col, row
+	private Position pos;
 	private int life;
 	private Game game;
 	private int cyclesToMove;
@@ -30,8 +30,6 @@ public class RegularAlien {
 	
 	public RegularAlien(Game game, AlienManager alienManager) {
 		this.game = game;
-		Position pos = new Position(0,0); // ver cómo determinamos la posición del alien
-		this.pos = pos;
 		this.life = ARMOR;
 		this.dir = Move.NONE;
 		this.alienManager = alienManager;
@@ -121,13 +119,12 @@ public class RegularAlien {
 		this.cyclesToMove--;
 	}
 	
+	public boolean isOnPosition(Position pos) {
+		return this.pos == pos;
+	}
+	
 	public boolean isOnPosition(int col, int row) {
-		if(this.pos.getCol() == col && this.pos.getRow() == row ) {
-			return true;
-		}
-		else {
-			return false;
-		}
+		return this.pos.getCol() == col && this.pos.getRow() == row;
 	}
 	
 	public void receiveDamage(int damage) {

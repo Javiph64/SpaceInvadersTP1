@@ -5,9 +5,9 @@ import java.util.Random;
 import tp1.logic.lists.*;
 import tp1.logic.gameobjects.*;
 
-
-// TODO implementarlo
 public class Game {
+	
+	// atributos
 
 	public static final int DIM_X = 9;
 	public static final int DIM_Y = 8;
@@ -17,32 +17,59 @@ public class Game {
 	private Level level;
 	private long seed;
 	private RegularAlienList regularAliens;
+	private DestroyerAlienList destroyerAliens;
 	private UCMShip player;
 	private UCMLaser laser;
 	private boolean doExit;
 	private AlienManager alienManager;
+	
+	private int regularAliensNum;
+	private int destroyerAliensNum;
+	private double shootFrecuency;
+	private double ufoFrecuency;
 
-
-	//TODO fill your code
+	// constructor
 
 	public Game(Level level, long seed) {
-		//TODO fill your code
+		this.doExit = false;
 	}
 	
-	public Game(Level level, long seed, RegularAlienList regularAliens, UCMShip player, UCMLaser laser, AlienManager alienManager) {
-		this.currentCycle = 0;
-		this.level = level;
-		this.seed = seed;
-		this.regularAliens = regularAliens;
-		this.player = player;
-		this.laser = laser;
-		this.doExit = false;
-		this.alienManager = alienManager;
-	}
-
+	// inicialización del juego
+	
 	private void initGame() {
-		//TODO
+		if(this.level == Level.EASY) {
+			int limit = 4;
+			this.regularAliensNum = 4;
+			this.destroyerAliensNum = 2;
+			this.shootFrecuency = 0.1;
+			this.player.setSpeed(3);
+			this.ufoFrecuency = 0.5;
+			RegularAlienList regularAliens = new RegularAlienList(regularAliensNum, limit);
+			DestroyerAlienList destroyerAliens = new DestroyerAlienList(destroyerAliensNum, limit);
+		}
+		else if(this.level == Level.HARD){
+			int limit = 8;
+			this.regularAliensNum = 8;
+			this.destroyerAliensNum = 2;
+			this.shootFrecuency = 0.3;
+			this.player.setSpeed(2);
+			this.ufoFrecuency = 0.2;
+			RegularAlienList regularAliens = new RegularAlienList(regularAliensNum, limit);
+			DestroyerAlienList destroyerAliens = new DestroyerAlienList(destroyerAliensNum, limit);
+		}
+		else {
+			int limit = 4;
+			this.regularAliensNum = 4;
+			this.destroyerAliensNum = 2;
+			this.shootFrecuency = 0.1;
+			this.player.setSpeed(1);
+			this.ufoFrecuency = 0.1;
+			RegularAlienList regularAliens = new RegularAlienList(regularAliensNum, limit);
+			DestroyerAlienList destroyerAliens = new DestroyerAlienList(destroyerAliensNum, limit);
+		}
 	}
+	
+	// getters y setters
 	
 	public UCMShip getUCMShip() {
 		return this.player;
@@ -58,6 +85,14 @@ public class Game {
 	
 	public void setAlienManager(AlienManager alienManager) {
 		this.alienManager = alienManager;
+	}
+	
+	public UCMLaser getLaser() {
+		return this.laser;
+	}
+	
+	public void setLaser(UCMLaser laser) {
+		this.laser = laser;
 	}
 	
 	public String stateToString() {
@@ -106,7 +141,41 @@ public class Game {
 
 	public Level getLevel() {
 		return this.level;
+	}	
+	
+	public int getRegularAliensNum() {
+		return this.regularAliensNum;
 	}
+	
+	public void setRegularAliensNum(int regularAliensNum) {
+		this.regularAliensNum = regularAliensNum;
+	}
+	
+	public int getDestroyerAliensNum() {
+		return this.destroyerAliensNum;
+	}
+	
+	public void setDestroyerAliensNum(int destroyerAliensNum) {
+		this.destroyerAliensNum = destroyerAliensNum;
+	}
+	
+	public double getShootFrecuency() {
+		return this.shootFrecuency;
+	}
+	
+	public void setShootFrecuency(double shootFrecuency) {
+		this.shootFrecuency = shootFrecuency;
+	}
+	
+	public double getUfoFrecuency() {
+		return this.ufoFrecuency;
+	}
+	
+	public void setUfoFrecuency(double ufoFrecuency) {
+		this.ufoFrecuency = ufoFrecuency;
+	}
+	
+	// otros métodos
 	
 	public void update() {
 		//TODO método que actualiza el juego
