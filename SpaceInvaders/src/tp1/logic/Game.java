@@ -256,8 +256,17 @@ public class Game {
 		return this.alienManager.getRemainingAliens();
 	}
 	
-	public void performAttack() {
-		//TODO
+	public void performAttack(Weapon weapon) {
+		// Comprobar si el arma (bomba o láser) ha impactado con alguna nave enemiga
+       		 for (Alien alien : aliens) {
+           		 if (weapon.isCollision(alien)) {
+               		 // Realizar el ataque y eliminar el arma si es necesario
+               		 weapon.performAttack(alien);
+               			 if (!weapon.isAlive()) {
+                   		 removeWeapon(weapon);
+                		 }
+            		  }
+       		 }	
 	}
 	
 	public void checkAttackTol() {
