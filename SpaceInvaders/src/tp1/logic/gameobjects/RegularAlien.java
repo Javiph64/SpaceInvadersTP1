@@ -197,8 +197,10 @@ public class RegularAlien {
 		return false;
 	}
 	
-	public void onDelete() {
+	public void onDelete(AlienManager alienManager) {
 		//TODO método que elimina la nave si se ha quedado sin vidas
+		// Notificar la eliminación al AlienManager
+       		 alienManager.removeAlien(this);
 	}
 	
 }
