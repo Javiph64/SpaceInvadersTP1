@@ -18,6 +18,7 @@ public class Bomb {
 	private boolean alive;
 	private Move dir;
 	private boolean enabled;
+	private DestroyerAlien source;  // Referencia a la nave que lanzó la bomba
 	
 	// constructor
 	
@@ -97,7 +98,8 @@ public class Bomb {
 	// otros métodos
 	
 	public void onDelete() {
-		
+		// Notificar a la nave que lanzó la bomba
+       		 source.notifyBombDestroyed(this);
 	}
 	
 	public void automaticMove () {
