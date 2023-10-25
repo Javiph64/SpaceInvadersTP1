@@ -145,7 +145,7 @@ public class UCMShip {
 	}
 	
 	public void onDelete() {
-		//TODO
+		System.out.println("UCMShip eliminado del juego.");
 	}
 	
 	public void automaticMove() {
