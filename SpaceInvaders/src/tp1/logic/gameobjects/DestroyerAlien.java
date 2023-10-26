@@ -169,16 +169,19 @@ public class DestroyerAlien {
 	
 	public void computerAction(Game game) {
 		// Obtener la frecuencia de disparo del nivel de dificultad actual
-        	double shootFrequency = game.getDifficultyShootFrequency();
+        	double shootFrequency = game.getShootFrecuency();
 
         	// Generar un número aleatorio entre 0 y 1
         	double randomValue = Math.random();
 
         	// Si el valor aleatorio es menor que la frecuencia de disparo, lanzar una bomba
         	if (randomValue < shootFrequency) {
-            		game.addBomb(new Bomb(this.getX(), this.getY(), this));
-       		}
-    	
+            		game.addBomb(new Bomb(game));
+       		}    	
+	}
+	
+	public void notifyBombDestroyed(Bomb bomb) {
+		
 	}
 	
 	public void automaticMove() {
@@ -200,7 +203,7 @@ public class DestroyerAlien {
 		}
 		else if(life == 1 ) {
 			life--;
-			this.onDelete();
+			//this.onDelete();
 		}
 		return false;
 	}

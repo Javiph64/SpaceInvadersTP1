@@ -124,5 +124,23 @@ public class AlienManager {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	public void removeAlien(RegularAlien alien) {
+		if(!alien.isAlive()) {
+			
+		}
+	}
+	
+	public void removeAlien(DestroyerAlien alien) {
+		if(!alien.isAlive()) {
+			
+		}
+	}
+	
+	public void removeAlien(Ufo alien) {
+		if(!alien.isAlive()) {
+			
+		}
+	}
 
 }

@@ -192,7 +192,7 @@ public class RegularAlien {
 		}
 		else if(life == 1 ) {
 			life--;
-			this.onDelete();
+			//this.onDelete();
 		}
 		return false;
 	}

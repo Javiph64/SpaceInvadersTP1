@@ -189,6 +189,10 @@ public class Game {
 		//TODO
 	}
 	
+	public void addBomb(Bomb bomb) {
+		
+	}
+	
 	public void positionToString() {
 		//TODO
 	}

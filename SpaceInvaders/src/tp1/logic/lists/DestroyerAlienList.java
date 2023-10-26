@@ -2,6 +2,7 @@ package tp1.logic.lists;
 
 import tp1.logic.Position;
 import tp1.logic.gameobjects.DestroyerAlien;
+import tp1.logic.gameobjects.RegularAlien;
 
 public class DestroyerAlienList {
 	
@@ -14,6 +15,7 @@ public class DestroyerAlienList {
 	// constructor
 	
 	public DestroyerAlienList(int num, int limit) {
+		this.objects = new DestroyerAlien[num];
 		this.num = num;
 		this.limit = limit;
 	}
@@ -40,7 +42,7 @@ public class DestroyerAlienList {
 	
 	public void add(DestroyerAlien alien, int limit) {
 		if(this.num < limit) {
-			this.objects[num + 1] = alien;
+			this.objects[num] = alien;
 			this.num++;
 		}
 	}
@@ -56,18 +58,31 @@ public class DestroyerAlienList {
 	}
 	
 	private DestroyerAlien getObjectInPosition(Position pos) {
+		DestroyerAlien alien = null;
 		for(int i = 0; i < this.num; i++) {
 			if(objects[i].isOnPosition(pos)) {
-				return objects[i];
+				alien = objects[i];
 			}
 		}
-		return null;
+		return alien;
 	}
 	
 	@Override
 	public String toString() {
 		//TODO
 		return null;
+	}
+	
+	// revisar este método
+	
+	public String getAliensToString(Position pos) {
+		String text = " ";
+		for(int i = 0; i < num; i++) {
+			if(objects[i].isOnPosition(pos)) {
+				text = objects[i].toString();
+			}
+		}
+		return text;
 	}
 	
 	public void computerActions() {
@@ -78,8 +93,16 @@ public class DestroyerAlienList {
 		//TODO
 	}
 	
+	// revisar este método
 	public void removeDead() {
-		//TODO
+		for(int i = 0; i < num; i++) {
+			if(!objects[i].isAlive()) {
+				for(int j = i; j < num - 1; j++) {
+					objects[j] = objects[j + 1];
+					num--;
+				}
+			}
+		}
 	}
 	
 	public void checkAttacks() {

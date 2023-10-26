@@ -14,6 +14,7 @@ public class RegularAlienList {
 	// constructor
 	
 	public RegularAlienList(int num, int limit) {
+		this.objects = new RegularAlien[num];
 		this.num = num;
 		this.limit = limit;
 	}
@@ -40,7 +41,7 @@ public class RegularAlienList {
 	
 	public void add(RegularAlien alien, int limit) {
 		if(this.num < limit) {
-			this.objects[num + 1] = alien;
+			this.objects[num] = alien;
 			this.num++;
 		}
 	}
@@ -56,18 +57,31 @@ public class RegularAlienList {
 	}
 	
 	private RegularAlien getObjectInPosition(Position pos) {
+		RegularAlien alien = null;
 		for(int i = 0; i < num; i++) {
 			if(objects[i].isOnPosition(pos)){
-				return objects[i];
+				alien = objects[i];
 			}
 		}
-		return null;
+		return alien;
 	}
 	
 	@Override
 	public String toString() {
 		//TODO
 		return null;
+	}
+	
+	// revisar este método
+	
+	public String getAliensToString(Position pos) {
+		String text = " ";
+		for(int i = 0; i < num; i++) {
+			if(objects[i].isOnPosition(pos)) {
+				text = objects[i].toString();
+			}
+		}
+		return text;
 	}
 	
 	public void computerActions() {
@@ -78,8 +92,16 @@ public class RegularAlienList {
 		//TODO
 	}
 	
+	// revisar este método
 	public void removeDead() {
-		//TODO
+		for(int i = 0; i < num; i++) {
+			if(!objects[i].isAlive()) {
+				for(int j = i; j < num - 1; j++) {
+					objects[j] = objects[j + 1];
+					num--;
+				}
+			}
+		}
 	}
 	
 	public void checkAttacks() {
