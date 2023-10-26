@@ -11,7 +11,7 @@ public class Bomb {
 	public static final int DAMAGE = 1;
 	private static final int ARMOR = 1;
 	
-	private Position pos; //col, row
+	private Position pos; 
 	private int life;
 	private Game game;
 	private String symbol;

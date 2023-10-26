@@ -46,6 +46,8 @@ public class Game {
 			this.ufoFrecuency = 0.5;
 			RegularAlienList regularAliens = new RegularAlienList(regularAliensNum, limit);
 			DestroyerAlienList destroyerAliens = new DestroyerAlienList(destroyerAliensNum, limit);
+			this.regularAliens = regularAliens;
+			this.destroyerAliens = destroyerAliens;
 		}
 		else if(this.level == Level.HARD){
 			int limit = 8;
@@ -56,6 +58,8 @@ public class Game {
 			this.ufoFrecuency = 0.2;
 			RegularAlienList regularAliens = new RegularAlienList(regularAliensNum, limit);
 			DestroyerAlienList destroyerAliens = new DestroyerAlienList(destroyerAliensNum, limit);
+			this.regularAliens = regularAliens;
+			this.destroyerAliens = destroyerAliens;
 		}
 		else {
 			int limit = 4;
@@ -66,6 +70,8 @@ public class Game {
 			this.ufoFrecuency = 0.1;
 			RegularAlienList regularAliens = new RegularAlienList(regularAliensNum, limit);
 			DestroyerAlienList destroyerAliens = new DestroyerAlienList(destroyerAliensNum, limit);
+			this.regularAliens = regularAliens;
+			this.destroyerAliens = destroyerAliens;
 		}
 	}
 	
@@ -93,6 +99,14 @@ public class Game {
 	
 	public void setLaser(UCMLaser laser) {
 		this.laser = laser;
+	}
+	
+	public RegularAlienList getRegularAlienList() {
+		return this.regularAliens;
+	}
+	
+	public DestroyerAlienList getDestroyerAlienList() {
+		return this.destroyerAliens;
 	}
 	
 	public String stateToString() {
@@ -132,7 +146,7 @@ public class Game {
 	}
 
 	public void enableLaser() {
-		//TODO fill your code		
+		this.laser.enableLaser();	
 	}
 
 	public Random getRandom() {
@@ -182,7 +196,7 @@ public class Game {
 	}
 
 	public void reset() {
-		//TODO
+		initGame();
 	}
 	
 	public void addObject() {

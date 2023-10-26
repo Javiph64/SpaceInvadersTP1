@@ -68,8 +68,11 @@ public class RegularAlienList {
 	
 	@Override
 	public String toString() {
-		//TODO
-		return null;
+		String alienText = "";
+		for(int i = 0; i < num; i++) {
+			alienText = alienText + objects[i].toString() + " ";
+		}
+		return alienText;
 	}
 	
 	// revisar este método
