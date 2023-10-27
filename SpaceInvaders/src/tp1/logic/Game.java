@@ -27,11 +27,14 @@ public class Game {
 	private int destroyerAliensNum;
 	private double shootFrecuency;
 	private double ufoFrecuency;
+	
+	private String[][] board;
 
 	// constructor
 
 	public Game(Level level, long seed) {
 		this.doExit = false;
+		this.board = new String[DIM_X][DIM_Y];
 	}
 	
 	// inicialización del juego
@@ -195,6 +198,15 @@ public class Game {
 		this.ufoFrecuency = ufoFrecuency;
 	}
 	
+	public void getCol() {
+		return this.board[][];
+	}
+	
+	public Position getPosition(int x, int y) {
+		Position pos = new Position(this.board[x][], this.board[][y]);
+		return pos;
+	}
+	
 	// otros métodos
 	
 	public void update() {
@@ -213,8 +225,8 @@ public class Game {
 		
 	}
 	
-	public void positionToString() {
-		//TODO
+	public String positionToString() {
+		return null;
 	}
 	
 	public boolean isFinished() {

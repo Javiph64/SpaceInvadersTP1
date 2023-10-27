@@ -81,6 +81,9 @@ public class Bomb {
 	
 	public void performMovement(Move move) {
 		this.dir = move;
+		int x = move.getX();
+		int y = move.getY();
+		this.setPosition(this.getPosition().getCol() + x, this.getPosition().getRow() + y);
 	}	
 	
 	public boolean enabled() {
