@@ -161,7 +161,19 @@ public class RegularAlien {
 	}
 	
 	public void computerAction() {
-		//TODO
+		 // Por ejemplo, decidimos movernos hacia abajo o disparar de manera aleatoria
+       		 boolean shouldMoveDown = Math.random() < 0.2; // Probabilidad del 20%
+       		 boolean shouldShoot = Math.random() < 0.1; // Probabilidad del 10%
+
+      		  if (shouldMoveDown) {
+           		 // Realiza la acción de mover hacia abajo
+          		  moveDown();
+        	}
+
+        	  if (shouldShoot) {
+           		 // Realiza la acción de disparar
+           		 shoot();
+       		 }
 	}
 
 	//TODO fill your code
