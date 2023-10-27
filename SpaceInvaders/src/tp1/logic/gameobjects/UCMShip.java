@@ -13,6 +13,7 @@ public class UCMShip {
 	
 	private Position pos; //col, row
 	private int life;
+	private int lives;
 	private Game game;
 	private boolean canShoot;
 	private String symbol;
@@ -150,6 +151,7 @@ public class UCMShip {
 	}
 	
 	public void onDelete() {
+		lives--;
 		System.out.println("UCMShip eliminado del juego.");
 	}
 	
