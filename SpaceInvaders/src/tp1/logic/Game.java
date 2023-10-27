@@ -236,10 +236,6 @@ public class Game {
 		initGame();
 	}
 
-	public void enableLaser() {
-        laser.enableLaser();
-   	}
-
    	public void exit() {
         doExit = true;
     	}
