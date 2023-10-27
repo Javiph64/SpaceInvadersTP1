@@ -143,9 +143,11 @@ public class UCMLaser {
 	 * @param other the regular alien possibly under attack
 	 * @return <code>true</code> if the alien has been attacked by the laser.
 	 */
+	
 	public boolean performAttack(RegularAlien other) {
-		//TODO fill your code
-		return false;
+		 int damage = 1; // Cantidad de daño que hace el láser al alien
+       		 alien.receiveAttack(damage); // Llama al método de recepción de ataque del RegularAlien
+       		 return true; // Devuelve true si el ataque tiene éxito
 	}
 
 	/**
@@ -158,8 +160,9 @@ public class UCMLaser {
 
 	
 	public boolean performAttack(DestroyerAlien other) {
-		//TODO fill your code
-		return false;
+		int damage = 2; // Cantidad de daño que hace el láser al destroyer alien
+        	alien.receiveAttack(damage); // Llama al método de recepción de ataque del DestroyerAlien
+        	return true; // Devuelve true si el ataque tiene éxito
 	}
 	
 	
