@@ -236,16 +236,12 @@ public class Game {
 		initGame();
 	}
 
-   	public void exit() {
-        doExit = true;
-    	}
-	
 	public void addObject() {
 		//TODO
 	}
 	
 	public void addBomb(Bomb bomb) {
-		
+		bombList.add(bomb);
 	}
 	
 	public String positionToString() {
@@ -253,12 +249,28 @@ public class Game {
 	}
 	
 	public boolean isFinished() {
-		//TODO
-		return false;
+		return playerWin() || aliensWin() || doExit;
 	}
 	
 	private void removeDead() {
-		//TODO
+		/*
+		FALTA
+  		// Eliminamos las naves alienígenas muertas
+    		regularAliens.removeDeadAliens();
+   		 destroyerAliens.removeDeadAliens();
+    
+   		// Eliminamos las bombas que hayan explotado o salido de la pantalla
+   		bombList.removeDeadBombs();
+    
+    		// Aquí Eliminar cualquier otro objeto que deba ser eliminado
+    		// ...
+
+    		// Actualizar el estado de los objetos restantes
+    		regularAliens.update();
+    		destroyerAliens.update();
+   		bombList.update();
+    		// ...
+      		*/
 	}
 	
 	private void computerActions() {
@@ -274,7 +286,7 @@ public class Game {
 	}
 	
 	public void exit() {
-		//TODO
+		doExit = true;
 	}
 	
 	public String infoToString() {
