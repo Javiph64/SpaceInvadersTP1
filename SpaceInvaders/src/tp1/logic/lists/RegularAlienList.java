@@ -88,7 +88,16 @@ public class RegularAlienList {
 	}
 	
 	public void computerActions() {
-		//TODO
+		 for (RegularAlien regularAlien : this.regularAliens) {
+		
+           	 // Por ejemplo, decidir si debe disparar (atacar) de manera aleatoria
+           	 boolean shouldShoot = Math.random() < 0.1; // Probabilidad del 10%
+
+           		 if (shouldShoot) {
+              		  // Realiza la acción de disparar (atacar)
+              		  regularAlien.shoot(); // Esto podría agregar un disparo a una lista de disparos pendientes
+            		}
+        	  }
 	}
 	
 	public void automaticActions() {
