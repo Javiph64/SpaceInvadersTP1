@@ -211,11 +211,38 @@ public class Game {
 	
 	public void update() {
 		//TODO método que actualiza el juego
+		currentCycle++;
+
+        	// Realizar acciones de la computadora
+        	computerActions();
+
+       		// Mover automáticamente las naves alienígenas
+        	automaticMoves();
+
+        	// Realizar otras actualizaciones necesarias
+        	// Por ejemplo, actualizar las bombas y el láser
+        	laserAutomaticMove();
+        	removeDead();
+
+        	// Verificar si el juego ha terminado
+        	if (playerWin()) {
+           	doExit = true;
+       		} else if (aliensWin()) {
+            	doExit = true;
+       		}
 	}
 
 	public void reset() {
 		initGame();
 	}
+
+	public void enableLaser() {
+        laser.enableLaser();
+   	}
+
+   	public void exit() {
+        doExit = true;
+    	}
 	
 	public void addObject() {
 		//TODO
