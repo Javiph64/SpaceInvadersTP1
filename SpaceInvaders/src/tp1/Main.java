@@ -4,8 +4,6 @@ import java.util.Locale;
 import java.util.Scanner;
 
 import tp1.control.Controller;
-import tp1.logic.Game;
-import tp1.logic.Level;
 import tp1.view.Messages;
 import static tp1.view.Messages.error;
 import tp1.view.*;
@@ -65,6 +63,18 @@ public class Main {
 					Scanner scanner = new Scanner(System.in);
 					Controller controller = new Controller(game, scanner);
 					controller.run();
+					
+					UCMShip player = new UCMShip();	
+					game.setUCMShip(player);
+					GamePrinter printer = new GamePrinter(game);
+					printer.printShip();
+					System.out.println(player.getInfo());
+					player.move(Move.LEFT);
+					player.move(Move.LEFT);
+					player.performMovement(Move.LEFT);
+					System.out.println(player.getInfo());
+					player.performMovement(Move.RRIGHT);
+					System.out.println(player.getInfo());
 					/*
 					Game game2 = new Game(level, seed);
 					UCMShip player = new UCMShip(game);		

@@ -274,6 +274,7 @@ public class Game {
 		return this.alienManager.getRemainingAliens();
 	}
 	
+	/*
 	public void performAttack(Weapon weapon) {
 		// Comprobar si el arma (bomba o láser) ha impactado con alguna nave enemiga
        		 for (Alien alien : aliens) {
@@ -286,6 +287,7 @@ public class Game {
             		  }
        		 }	
 	}
+	*/
 	
 	public void checkAttackTol() {
 		//TODO

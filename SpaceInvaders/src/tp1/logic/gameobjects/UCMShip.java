@@ -23,14 +23,12 @@ public class UCMShip {
 	
 	// constructor
 	
-	public UCMShip(Game game, UCMLaser laser) {
+	public UCMShip() {
 		Position pos = new Position(4,7);
 		this.pos = pos;
 		this.life = ARMOR;
 		this.canShoot = true;
 		this.symbol = "^__^";
-		this.game = game;
-		this.laser = laser;
 		this.alive = true;
 		this.dir = Move.NONE;
 	}
@@ -66,6 +64,10 @@ public class UCMShip {
 		return this.laser;
 	}
 	
+	public void setLaser(UCMLaser laser) {
+		this.laser = laser;
+	}
+	
 	public boolean canShoot() {
 		return canShoot;
 	}
@@ -97,6 +99,9 @@ public class UCMShip {
 	
 	public void performMovement(Move move) {
 		this.dir = move;
+		int x = move.getX();
+		int y = move.getY();
+		this.setPosition(this.getPosition().getCol() + x, this.getPosition().getRow() + y);
 	}
 	
 	public int getSpeed() {
@@ -128,8 +133,8 @@ public class UCMShip {
 	}
 	
 	public String getInfo() {
-		//TODO
-		return null;
+		String info = "Col: " + this.getPosition().getCol() + " Row: " + this.getPosition().getRow();
+		return info;
 	}
 	
 	public String getDescription() {
