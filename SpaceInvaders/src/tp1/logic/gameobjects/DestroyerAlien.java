@@ -24,11 +24,9 @@ public class DestroyerAlien {
 	
 	// constructor
 	
-	public DestroyerAlien(Game game, AlienManager alienManager) {
-		this.game = game;
+	public DestroyerAlien() {
 		this.life = ARMOR;
 		this.dir = Move.NONE;
-		this.alienManager = alienManager;
 		this.alive = true;
 		this.symbol = "D";
 	}

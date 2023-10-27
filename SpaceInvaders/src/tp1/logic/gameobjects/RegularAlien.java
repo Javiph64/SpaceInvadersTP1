@@ -28,11 +28,9 @@ public class RegularAlien {
 	
 	// constructor
 	
-	public RegularAlien(Game game, AlienManager alienManager) {
-		this.game = game;
+	public RegularAlien() {
 		this.life = ARMOR;
 		this.dir = Move.NONE;
-		this.alienManager = alienManager;
 		this.alive = true;
 		this.symbol = "R";
 	}

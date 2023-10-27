@@ -111,5 +111,13 @@ public class DestroyerAlienList {
 	public void checkAttacks() {
 		//TODO
 	}
+	
+	public void initDestroyerAlienList() {
+		for(int i = 0; i < num; i++) {
+			DestroyerAlien alien = new DestroyerAlien();
+			objects[i] = alien;
+		}
+	}
+
 
 }

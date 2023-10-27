@@ -110,5 +110,12 @@ public class RegularAlienList {
 	public void checkAttacks() {
 		//TODO
 	}
+	
+	public void initRegularAlienList() {
+		for(int i = 0; i < num; i++) {
+			RegularAlien alien = new RegularAlien();
+			objects[i] = alien;
+		}
+	}
 
 }

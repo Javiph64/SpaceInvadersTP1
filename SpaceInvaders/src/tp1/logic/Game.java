@@ -47,7 +47,9 @@ public class Game {
 			RegularAlienList regularAliens = new RegularAlienList(regularAliensNum, limit);
 			DestroyerAlienList destroyerAliens = new DestroyerAlienList(destroyerAliensNum, limit);
 			this.regularAliens = regularAliens;
+			regularAliens.initRegularAlienList();
 			this.destroyerAliens = destroyerAliens;
+			destroyerAliens.initDestroyerAlienList();
 		}
 		else if(this.level == Level.HARD){
 			int limit = 8;
@@ -59,19 +61,23 @@ public class Game {
 			RegularAlienList regularAliens = new RegularAlienList(regularAliensNum, limit);
 			DestroyerAlienList destroyerAliens = new DestroyerAlienList(destroyerAliensNum, limit);
 			this.regularAliens = regularAliens;
+			regularAliens.initRegularAlienList();
 			this.destroyerAliens = destroyerAliens;
+			destroyerAliens.initDestroyerAlienList();
 		}
 		else {
 			int limit = 4;
-			this.regularAliensNum = 4;
-			this.destroyerAliensNum = 2;
+			this.regularAliensNum = 8;
+			this.destroyerAliensNum = 4;
 			this.shootFrecuency = 0.1;
 			this.player.setSpeed(1);
 			this.ufoFrecuency = 0.1;
 			RegularAlienList regularAliens = new RegularAlienList(regularAliensNum, limit);
 			DestroyerAlienList destroyerAliens = new DestroyerAlienList(destroyerAliensNum, limit);
 			this.regularAliens = regularAliens;
+			regularAliens.initRegularAlienList();
 			this.destroyerAliens = destroyerAliens;
+			destroyerAliens.initDestroyerAlienList();
 		}
 	}
 	

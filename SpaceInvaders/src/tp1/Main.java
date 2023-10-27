@@ -67,6 +67,10 @@ public class Main {
 					UCMShip player = new UCMShip();	
 					game.setUCMShip(player);
 					GamePrinter printer = new GamePrinter(game);
+					AlienManager alienManager = new AlienManager(game, level);
+					game.setAlienManager(alienManager);
+					
+					/* esto funciona
 					printer.printShip();
 					System.out.println(player.getInfo());
 					player.move(Move.LEFT);
@@ -75,13 +79,16 @@ public class Main {
 					System.out.println(player.getInfo());
 					player.performMovement(Move.RRIGHT);
 					System.out.println(player.getInfo());
-					/*
-					Game game2 = new Game(level, seed);
-					UCMShip player = new UCMShip(game);		
-					AlienManager alienManager = new AlienManager(game2, level);
+					*/
 					
-					game2.setUCMShip(player);
-					game2.setAlienManager(alienManager);
+					game.reset();
+					System.out.println(game.getRegularAlienList().toString());
+					System.out.println(game.getDestroyerAlienList().toString());
+					
+					System.out.println(printer.toString());
+					
+					
+					/*
 					
 					GamePrinter printer = new GamePrinter(game2);
 					printer.printShip();
