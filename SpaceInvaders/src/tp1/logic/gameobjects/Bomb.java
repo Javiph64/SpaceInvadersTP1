@@ -29,6 +29,7 @@ public class Bomb {
 		this.alive = true;
 		this.dir = Move.NONE;
 		this.enabled = true;
+		this.source = source;
 	}
 	
 	// getters y setters
