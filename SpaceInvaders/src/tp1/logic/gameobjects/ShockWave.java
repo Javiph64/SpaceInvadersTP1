@@ -12,6 +12,7 @@ public class ShockWave {
 
 	private Game game;
 	private boolean enabled;
+	private int remainingCycles;
 	
 	// constructor
 	
@@ -41,6 +42,13 @@ public class ShockWave {
 	// otros métodos
 	
 	public void onDelete() {
-		
+	
+        remainingCycles--; // simplemente decrementamos los ciclos restantes
+
+       		 if (remainingCycles <= 0) {
+            	// Cuando no quedan ciclos restantes, la ShockWave se elimina definitivamente
+            	// Realizamos cualquier acción adicional necesaria
+        
+        	}
 	}
 }
