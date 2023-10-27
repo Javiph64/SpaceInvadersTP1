@@ -210,7 +210,7 @@ public class RegularAlien {
 		return false;
 	}
 	
-	public void onDelete(AlienManager alienManager) {
+	public void onDelete() {
 		//TODO método que elimina la nave si se ha quedado sin vidas
 		if (!isAlive()) {
             		// Notificar la eliminación al AlienManager para actualizar el contador
