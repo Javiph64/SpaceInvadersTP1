@@ -39,6 +39,14 @@ public class GamePrinter {
 		System.out.println(this.game.getLaser().toString());
 	}
 	
+	public void printRegularAliens() {
+		System.out.println(this.game.getRegularAlienList().toString());
+	}
+	
+	public void printDestroyerAliens() {
+		System.out.println(this.game.getDestroyerAlienList().toString());
+	}
+	
 	/**
 	 * Builds a string that represent the game status
 	 * 

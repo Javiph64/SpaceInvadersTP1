@@ -28,11 +28,9 @@ public class RegularAlien {
 	
 	// constructor
 	
-	public RegularAlien(Game game, AlienManager alienManager) {
-		this.game = game;
+	public RegularAlien() {
 		this.life = ARMOR;
 		this.dir = Move.NONE;
-		this.alienManager = alienManager;
 		this.alive = true;
 		this.symbol = "R";
 	}
@@ -94,6 +92,9 @@ public class RegularAlien {
 	
 	public void performMovement(Move move) {
 		this.dir = move;
+		int x = move.getX();
+		int y = move.getY();
+		this.setPosition(this.getPosition().getCol() + x, this.getPosition().getRow() + y);
 	}
 	
 	public AlienManager getAlienManager() {
@@ -159,11 +160,23 @@ public class RegularAlien {
 		return 0;
 	}
 	
+	/*
 	public void computerAction() {
-		//TODO
-	}
+	// Por ejemplo, decidimos movernos hacia abajo o disparar de manera aleatoria
+		boolean shouldMoveDown = Math.random() < 0.2; // Probabilidad del 20%
+		boolean shouldShoot = Math.random() < 0.1; // Probabilidad del 10%
 
-	//TODO fill your code
+      	if (shouldMoveDown) {
+      		// Realiza la acción de mover hacia abajo
+          	moveDown();
+        }
+
+        if (shouldShoot) {
+        	// Realiza la acción de disparar
+           	shoot();
+       	}
+	}
+	*/
 
 	/**
 	 *  Implements the automatic movement of the regular alien	
@@ -192,13 +205,16 @@ public class RegularAlien {
 		}
 		else if(life == 1 ) {
 			life--;
-			this.onDelete();
+			//this.onDelete();
 		}
 		return false;
 	}
 	
 	public void onDelete() {
 		//TODO método que elimina la nave si se ha quedado sin vidas
+		if(!isAlive()) {
+			// Notificar la eliminación al AlienManager para actualizar el contador
+		}
 	}
 	
 }

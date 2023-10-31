@@ -65,13 +65,32 @@ public class Main {
 					Scanner scanner = new Scanner(System.in);
 					Controller controller = new Controller(game, scanner);
 					controller.run();
-					/*
-					Game game2 = new Game(level, seed);
-					UCMShip player = new UCMShip(game);		
-					AlienManager alienManager = new AlienManager(game2, level);
 					
-					game2.setUCMShip(player);
-					game2.setAlienManager(alienManager);
+					UCMShip player = new UCMShip(game);
+					game.setUCMShip(player);
+					GamePrinter printer = new GamePrinter(game);
+					AlienManager alienManager = new AlienManager(game, level);
+					game.setAlienManager(alienManager);
+					
+					/* esto funciona
+					printer.printShip();
+					System.out.println(player.getInfo());
+					player.move(Move.LEFT);
+					player.move(Move.LEFT);
+					player.performMovement(Move.LEFT);
+					System.out.println(player.getInfo());
+					player.performMovement(Move.RRIGHT);
+					System.out.println(player.getInfo());
+					*/
+					
+					game.reset();
+					System.out.println(game.getRegularAlienList().toString());
+					System.out.println(game.getDestroyerAlienList().toString());
+					
+					System.out.println(printer.toString());
+					
+					
+					/*
 					
 					GamePrinter printer = new GamePrinter(game2);
 					printer.printShip();

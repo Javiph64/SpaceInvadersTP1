@@ -24,11 +24,9 @@ public class DestroyerAlien {
 	
 	// constructor
 	
-	public DestroyerAlien(Game game, AlienManager alienManager) {
-		this.game = game;
+	public DestroyerAlien() {
 		this.life = ARMOR;
 		this.dir = Move.NONE;
-		this.alienManager = alienManager;
 		this.alive = true;
 		this.symbol = "D";
 	}
@@ -90,6 +88,9 @@ public class DestroyerAlien {
 	
 	public void performMovement(Move move) {
 		this.dir = move;
+		int x = move.getX();
+		int y = move.getY();
+		this.setPosition(this.getPosition().getCol() + x, this.getPosition().getRow() + y);
 	}
 	
 	public AlienManager getAlienManager() {
@@ -167,8 +168,21 @@ public class DestroyerAlien {
 		return 0;
 	}
 	
-	public void computerAction() {
-		//TODO
+	public void computerAction(Game game) {
+		// Obtener la frecuencia de disparo del nivel de dificultad actual
+        	double shootFrequency = game.getShootFrecuency();
+
+        	// Generar un número aleatorio entre 0 y 1
+        	double randomValue = Math.random();
+
+        	// Si el valor aleatorio es menor que la frecuencia de disparo, lanzar una bomba
+        	if (randomValue < shootFrequency) {
+            		game.addBomb(new Bomb(game));
+       		}    	
+	}
+	
+	public void notifyBombDestroyed(Bomb bomb) {
+		
 	}
 	
 	public void automaticMove() {
@@ -190,13 +204,15 @@ public class DestroyerAlien {
 		}
 		else if(life == 1 ) {
 			life--;
-			this.onDelete();
+			//this.onDelete();
 		}
 		return false;
 	}
 	
-	public void onDelete() {
+	public void onDelete(AlienManager alienManager) {
 		//TODO método que elimina la nave si se ha quedado sin vidas
+		// Notificar la eliminación al AlienManager
+        	alienManager.removeAlien(this);
 	}
 	
 	private boolean readyToDescend() {

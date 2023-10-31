@@ -11,13 +11,14 @@ public class Bomb {
 	public static final int DAMAGE = 1;
 	private static final int ARMOR = 1;
 	
-	private Position pos; //col, row
+	private Position pos;
 	private int life;
 	private Game game;
 	private String symbol;
 	private boolean alive;
 	private Move dir;
 	private boolean enabled;
+	private DestroyerAlien source; // Referencia a la nace que lanzó la bomba
 	
 	// constructor
 	
@@ -80,6 +81,9 @@ public class Bomb {
 	
 	public void performMovement(Move move) {
 		this.dir = move;
+		int x = move.getX();
+		int y = move.getY();
+		this.setPosition(this.getPosition().getCol() + x, this.getPosition().getRow() + y);
 	}	
 	
 	public boolean enabled() {
@@ -97,7 +101,8 @@ public class Bomb {
 	// otros métodos
 	
 	public void onDelete() {
-		
+		// Notificar a la nave que lanzó la bomba
+       		 source.notifyBombDestroyed(this);
 	}
 	
 	public void automaticMove () {
