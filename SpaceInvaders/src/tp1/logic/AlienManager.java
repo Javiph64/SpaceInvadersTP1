@@ -233,5 +233,23 @@ public class AlienManager {
 			
 		}
 	}
+	
+	public void removeAlien(RegularAlien alien) {
+		if(!alien.isAlive()) {
+			
+		}
+	}
+	
+	public void removeAlien(DestroyerAlien alien) {
+		if(!alien.isAlive()) {
+			
+		}
+	}
+	
+	public void removeAlien(Ufo alien) {
+		if(!alien.isAlive()) {
+			
+		}
+	}
 
 }

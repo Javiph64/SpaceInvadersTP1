@@ -11,14 +11,15 @@ public class Bomb {
 	public static final int DAMAGE = 1;
 	private static final int ARMOR = 1;
 	
-	private Position pos;
+
+	private Position pos; 
 	private int life;
 	private Game game;
 	private String symbol;
 	private boolean alive;
 	private Move dir;
 	private boolean enabled;
-	private DestroyerAlien source; // Referencia a la nace que lanzó la bomba
+	private DestroyerAlien source;  // Referencia a la nave que lanzó la bomba
 	
 	// constructor
 	
@@ -29,6 +30,7 @@ public class Bomb {
 		this.alive = true;
 		this.dir = Move.NONE;
 		this.enabled = true;
+		this.source = source;
 	}
 	
 	// getters y setters

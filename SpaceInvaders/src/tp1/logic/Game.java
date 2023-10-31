@@ -213,35 +213,37 @@ public class Game {
 		//TODO método que actualiza el juego
 		currentCycle++;
 
-    	// Realizar acciones de la computadora
-    	computerActions();
+        	// Realizar acciones de la computadora
+        	computerActions();
 
-   		// Mover automáticamente las naves alienígenas
-    	automaticMoves();
+       		// Mover automáticamente las naves alienígenas
+        	automaticMoves();
 
-    	// Realizar otras actualizaciones necesarias
-    	// Por ejemplo, actualizar las bombas y el láser
-    	laserAutomaticMove();
-    	removeDead();
+        	// Realizar otras actualizaciones necesarias
+        	// Por ejemplo, actualizar las bombas y el láser
+        	laserAutomaticMove();
+        	removeDead();
 
-    	// Verificar si el juego ha terminado
-    	if (playerWin()) {
-       	doExit = true;
-   		} else if (aliensWin()) {
-        	doExit = true;
-   		}
+        	// Verificar si el juego ha terminado
+        	if (playerWin()) {
+           	doExit = true;
+       		} else if (aliensWin()) {
+            	doExit = true;
+       		}
+
 	}
 
 	public void reset() {
 		initGame();
 	}
-	
+
 	public void addObject() {
 		//TODO
 	}
 	
 	public void addBomb(Bomb bomb) {
-		bombList.add(Bomb);
+		bombList.add(bomb);
+
 	}
 	
 	public String positionToString() {
@@ -264,6 +266,8 @@ public class Game {
     
     		// Aquí Eliminar cualquier otro objeto que deba ser eliminado
     		// ...
+
+
     		// Actualizar el estado de los objetos restantes
     		regularAliens.update();
     		destroyerAliens.update();
@@ -284,8 +288,9 @@ public class Game {
 		//TODO
 	}
 	
-	private void automaticMoves() {
-		//TODO
+	public void exit() {
+		doExit = true;
+
 	}
 	
 	public String infoToString() {

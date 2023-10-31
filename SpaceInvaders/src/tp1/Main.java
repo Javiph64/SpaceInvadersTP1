@@ -4,8 +4,6 @@ import java.util.Locale;
 import java.util.Scanner;
 
 import tp1.control.Controller;
-import tp1.logic.Game;
-import tp1.logic.Level;
 import tp1.view.Messages;
 import static tp1.view.Messages.error;
 import tp1.view.*;
@@ -67,6 +65,8 @@ public class Main {
 					controller.run();
 					
 					UCMShip player = new UCMShip(game);
+					UCMShip player = new UCMShip();	
+
 					game.setUCMShip(player);
 					GamePrinter printer = new GamePrinter(game);
 					AlienManager alienManager = new AlienManager(game, level);

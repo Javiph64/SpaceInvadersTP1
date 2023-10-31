@@ -12,6 +12,7 @@ public class UCMShip {
 	private static final int ARMOR = 3;
 	private static final int DAMAGE = 0;
 	
+
 	private int life = ARMOR;
 	private int speed;
 	private boolean canShoot = true;
@@ -56,6 +57,10 @@ public class UCMShip {
 		this.speed = speed;
 	}
 	
+	public void setLaser(UCMLaser laser) {
+		this.laser = laser;
+	}
+	
 	public boolean canShoot() {
 		return this.canShoot;
 	}
@@ -93,10 +98,19 @@ public class UCMShip {
 		this.pos = pos;
 	}
 	
+
 	public void setPosition(int x, int y) {
 		this.pos.setCol(x);
 		this.pos.setRow(y);
 	}	
+
+	public void performMovement(Move move) {
+		this.dir = move;
+		int x = move.getX();
+		int y = move.getY();
+		this.setPosition(this.getPosition().getCol() + x, this.getPosition().getRow() + y);
+	}
+
 	
 	public UCMLaser getLaser() {
 		return this.laser;
@@ -178,6 +192,14 @@ public class UCMShip {
 	}
 	
 	public void receiveAttack() {
+		//TODO
+	}
+	
+	public void performAttack() {
+		//TODO
+	}
+	
+	private void weaponAttack() {
 		//TODO
 	}
 	

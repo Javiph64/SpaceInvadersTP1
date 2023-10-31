@@ -162,9 +162,20 @@ public class RegularAlien {
 	
 	/*
 	public void computerAction() {
-	// Por ejemplo, decidimos movernos hacia abajo o disparar de manera aleatoria
-		boolean shouldMoveDown = Math.random() < 0.2; // Probabilidad del 20%
-		boolean shouldShoot = Math.random() < 0.1; // Probabilidad del 10%
+		 // Por ejemplo, decidimos movernos hacia abajo o disparar de manera aleatoria
+       		 boolean shouldMoveDown = Math.random() < 0.2; // Probabilidad del 20%
+       		 boolean shouldShoot = Math.random() < 0.1; // Probabilidad del 10%
+
+      		  if (shouldMoveDown) {
+           		 // Realiza la acción de mover hacia abajo
+          		  moveDown();
+        	}
+
+        	  if (shouldShoot) {
+           		 // Realiza la acción de disparar
+           		 shoot();
+       		 }
+	}
 
       	if (shouldMoveDown) {
       		// Realiza la acción de mover hacia abajo
@@ -212,9 +223,11 @@ public class RegularAlien {
 	
 	public void onDelete() {
 		//TODO método que elimina la nave si se ha quedado sin vidas
-		if(!isAlive()) {
-			// Notificar la eliminación al AlienManager para actualizar el contador
-		}
+
+		if (!isAlive()) {
+            		// Notificar la eliminación al AlienManager para actualizar el contador
+            		AlienManager.notifyAlienDestroyed(this);
+        	}
 	}
 	
 }

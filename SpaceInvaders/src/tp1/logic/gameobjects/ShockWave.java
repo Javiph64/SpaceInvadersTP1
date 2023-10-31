@@ -48,4 +48,5 @@ public class ShockWave {
 			// Realizamos cualquier acción adicional necesaria
 		}
 	}
+  
 }
