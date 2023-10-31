@@ -64,7 +64,9 @@ public class Main {
 					Controller controller = new Controller(game, scanner);
 					controller.run();
 					
+					UCMShip player = new UCMShip(game);
 					UCMShip player = new UCMShip();	
+
 					game.setUCMShip(player);
 					GamePrinter printer = new GamePrinter(game);
 					AlienManager alienManager = new AlienManager(game, level);

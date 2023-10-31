@@ -42,13 +42,11 @@ public class ShockWave {
 	// otros métodos
 	
 	public void onDelete() {
-	
-        remainingCycles--; // simplemente decrementamos los ciclos restantes
-
-       		 if (remainingCycles <= 0) {
-            	// Cuando no quedan ciclos restantes, la ShockWave se elimina definitivamente
-            	// Realizamos cualquier acción adicional necesaria
-        
-        	}
+		remainingCycles--; // simplemente decrementamos los ciclos restantes
+		if(remainingCycles <= 0) {
+			// Cuando no quedan ciclos restantes, la ShockWave se elimina definitivamente
+			// Realizamos cualquier acción adicional necesaria
+		}
 	}
+  
 }

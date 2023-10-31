@@ -230,6 +230,7 @@ public class Game {
        		} else if (aliensWin()) {
             	doExit = true;
        		}
+
 	}
 
 	public void reset() {
@@ -242,6 +243,7 @@ public class Game {
 	
 	public void addBomb(Bomb bomb) {
 		bombList.add(bomb);
+
 	}
 	
 	public String positionToString() {
@@ -265,6 +267,7 @@ public class Game {
     		// Aquí Eliminar cualquier otro objeto que deba ser eliminado
     		// ...
 
+
     		// Actualizar el estado de los objetos restantes
     		regularAliens.update();
     		destroyerAliens.update();
@@ -277,16 +280,17 @@ public class Game {
 		//TODO
 	}
 	
-	private void laserAutomaticMove() {
-		//TODO
+	public void exit() {
+		doExit = true;
 	}
 	
-	private void automaticMoves() {
+	private void laserAutomaticMove() {
 		//TODO
 	}
 	
 	public void exit() {
 		doExit = true;
+
 	}
 	
 	public String infoToString() {

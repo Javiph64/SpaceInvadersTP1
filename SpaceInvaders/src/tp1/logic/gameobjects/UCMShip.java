@@ -10,43 +10,35 @@ public class UCMShip {
 	// atributos 
 	
 	private static final int ARMOR = 3;
+	private static final int DAMAGE = 0;
 	
-	private Position pos; //col, row
-	private int life;
-	private int lives;
-	private Game game;
-	private boolean canShoot;
-	private String symbol;
-	private boolean alive;
-	private UCMLaser laser;
-	private Move dir;
+
+	private int life = ARMOR;
 	private int speed;
+	private boolean canShoot = true;
+	private boolean alive = true;
+	private String symbol = "^__^";		
+	private Game game;
+	private Position pos;	
+	private UCMLaser laser;
+	private Move dir;	
 	
 	// constructor
 	
-	public UCMShip() {
-		Position pos = new Position(4,7);
+	public UCMShip(Game game, Position pos) {
+		this.game = game;
 		this.pos = pos;
-		this.life = ARMOR;
-		this.canShoot = true;
-		this.symbol = "^__^";
-		this.alive = true;
-		this.dir = Move.NONE;
 	}
 	
 	// getters y setters
 	
-	public Position getPosition() {
-		return this.pos;
-	}
-	
-	public void setPosition(Position pos) {
-		this.pos = pos;
-	}
-	
-	public void setPosition(int x, int y) {
-		this.pos.setCol(x);
-		this.pos.setRow(y);
+	public int getDamage() {
+		if(this.life == ARMOR) {
+			return DAMAGE;
+		}
+		else {
+			return ARMOR - this.life;
+		}
 	}
 	
 	public int getLife() {
@@ -57,12 +49,12 @@ public class UCMShip {
 		this.life = life;
 	}
 	
-	public Game getGame() {
-		return this.game;
+	public int getSpeed() {
+		return this.speed;
 	}
 	
-	public UCMLaser getLaser() {
-		return this.laser;
+	public void setSpeed(int speed) {
+		this.speed = speed;
 	}
 	
 	public void setLaser(UCMLaser laser) {
@@ -70,11 +62,19 @@ public class UCMShip {
 	}
 	
 	public boolean canShoot() {
-		return canShoot;
+		return this.canShoot;
 	}
 	
 	public void setCanShoot() {
 		this.canShoot = !this.canShoot;
+	}
+	
+	public boolean isAlive() {
+		return this.alive;
+	}
+	
+	public void die() {
+		this.alive = false;
 	}
 	
 	private String getSymbol() {
@@ -86,16 +86,65 @@ public class UCMShip {
 		return this.getSymbol();
 	}
 	
-	public boolean isAlive() {
-		return this.alive;
+	public Game getGame() {
+		return this.game;
+	}	
+	
+	public Position getPosition() {
+		return this.pos;
 	}
 	
-	public void die() {
-		this.alive = false;
+	public void setPosition(Position pos) {
+		this.pos = pos;
 	}
+	
+
+	public void setPosition(int x, int y) {
+		this.pos.setCol(x);
+		this.pos.setRow(y);
+	}	
+
+	public void performMovement(Move move) {
+		this.dir = move;
+		int x = move.getX();
+		int y = move.getY();
+		this.setPosition(this.getPosition().getCol() + x, this.getPosition().getRow() + y);
+	}
+
+	
+	public UCMLaser getLaser() {
+		return this.laser;
+	}
+	
+	public void setLaser(UCMLaser laser) {
+		this.laser = laser;
+	}	
 	
 	public Move getDir() {
 		return this.dir;
+	}
+	
+	// otros métodos
+	
+	public boolean isOnPosition(int col, int row) {
+		return this.pos.getCol() == col && this.pos.getRow() == row;
+	}
+	
+	public void receiveDamage(int damage) {
+		this.life = this.life - damage;
+		if(this.getLife() < 1) {
+			die();
+		}
+	}
+	
+	public boolean isOut() {
+		if((this.getPosition().getCol() < 0 || this.getPosition().getCol() > 7) || 
+				(this.getPosition().getRow() < 0 || this.getPosition().getRow() > 8)) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	
 	public void performMovement(Move move) {
@@ -103,34 +152,11 @@ public class UCMShip {
 		int x = move.getX();
 		int y = move.getY();
 		this.setPosition(this.getPosition().getCol() + x, this.getPosition().getRow() + y);
-	}
-	
-	public int getSpeed() {
-		return this.speed;
-	}
-	
-	public void setSpeed(int speed) {
-		this.speed = speed;
-	}
-	
-	// otros métodos	
-	
-	public boolean isOnPosition(int col, int row) {
-		return this.pos.getCol() == col && this.pos.getRow() == row;
-	}
-	
-	public boolean isOut() {
-		//TODO
-		return false;
 	}	
 	
 	public String stateToString() {
-		if(isAlive()) {
-			return "Alive";
-		}
-		else {
-			return "Dead";
-		}
+		return "Position: " + getInfo() + "\n" + "Description: " + 
+				getDescription() + "\n" + "Damage: " + getDamage();
 	}
 	
 	public String getInfo() {
@@ -141,18 +167,10 @@ public class UCMShip {
 	public String getDescription() {
 		//TODO
 		return null;
-	}
-	
-	public void receiveDamage(int damage) {
-		this.life = this.life - damage;
-		if(this.getLife() < 1) {
-			die();
-		}
-	}
+	}	
 	
 	public void onDelete() {
-		lives--;
-		System.out.println("UCMShip eliminado del juego.");
+		System.out.println("Player eliminated.");
 	}
 	
 	public void automaticMove() {

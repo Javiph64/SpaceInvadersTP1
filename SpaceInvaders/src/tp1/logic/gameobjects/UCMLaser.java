@@ -13,41 +13,33 @@ public class UCMLaser {
 	
 	// atributos 
 	
-	public static final int DAMAGE = 3;
+	public static final int DAMAGE = 0;
 	private static final int ARMOR = 1;
 	
-	private Position pos;
-	private int life;
+	private int life = ARMOR;
+	public boolean alive = true;
+	private boolean enable = true;	
+	private String symbol = "oo";
 	private Game game;
-	private String symbol;
-	public boolean alive;
+	private Position pos;
 	private Move dir;
-	private boolean enable;
 	
 	// constructor 
 	
-	public UCMLaser(Game game) {
-		this.life = ARMOR;
+	public UCMLaser(Game game, Position pos) {
 		this.game = game;
-		this.symbol = "oo";
-		this.alive = true;
-		this.dir = Move.NONE;
-		this.enable = true;
+		this.pos = pos;
 	}
 	
 	// getters y setters
 	
-	public Position getPosition() {
-		return this.pos;
-	}
-	
-	public void setPosition(Position pos) {
-		this.pos = pos;
-	}
-	
-	public void setPosition(int x, int y) {
-		this.pos.setCol(x);
-		this.pos.setRow(y);
+	public int getDamage() {
+		if(this.life == ARMOR) {
+			return DAMAGE;
+		}
+		else {
+			return ARMOR - this.life;
+		}
 	}
 	
 	public int getLife() {
@@ -57,19 +49,6 @@ public class UCMLaser {
 	public void setLife(int life) {
 		this.life = life;
 	}
-	
-	public Game getGame() {
-		return this.game;
-	}
-	
-	private String getSymbol() {
-		return this.symbol;
-	}
-	
-	@Override
-	public String toString() {
-		return this.getSymbol();
-	}	
 	
 	public boolean isAlive() {
 		return this.alive;
@@ -89,7 +68,7 @@ public class UCMLaser {
 		int y = move.getY();
 		this.setPosition(this.getPosition().getCol() + x, this.getPosition().getRow() + y);
 	}	
-	
+
 	public boolean getEnable() {
 		return this.enable;
 	}
@@ -101,39 +80,75 @@ public class UCMLaser {
 	public void disableLaser() {
 		this.enable = false;
 	}
+	
+	private String getSymbol() {
+		return this.symbol;
+	}
+	
+	@Override
+	public String toString() {
+		return this.getSymbol();
+	}
+	
+	public Game getGame() {
+		return this.game;
+	}	
+	
+	public Position getPosition() {
+		return this.pos;
+	}
+	
+	public void setPosition(Position pos) {
+		this.pos = pos;
+	}
+	
+	public void setPosition(int x, int y) {
+		this.pos.setCol(x);
+		this.pos.setRow(y);
+	}	
+	
+	public Move getDir() {
+		return this.dir;
+	}	
 		
 	// otros métodos
 	
 	public boolean isOnPosition(int col, int row) {
-		if(this.pos.getCol() == col && this.pos.getRow() == row ) {
+		return this.pos.getCol() == col && this.pos.getRow() == row;
+	}
+	
+	public void receiveDamage(int damage) {
+		this.life = this.life - damage;
+		if(this.getLife() < 1) {
+			die();
+		}
+	}
+	
+	public boolean isOut() {
+		if((this.getPosition().getCol() < 0 || this.getPosition().getCol() > 7) || 
+				(this.getPosition().getRow() < 0 || this.getPosition().getRow() > 8 )) {
 			return true;
 		}
 		else {
 			return false;
 		}
 	}
+	
+	public void performMovement(Move move) {
+		this.dir = move;
+		int x = move.getX();
+		int y = move.getY();
+		this.setPosition(this.getPosition().getCol() + x, this.getPosition().getRow() + y);
+	}	
 
-	/**
-	 *  Method called when the laser disappears from the board
-	 */
 	public void onDelete() {
-		game.enableLaser();
+		System.out.println("Laser eliminated.");
 	}
 
-	/**
-	 *  Implements the automatic movement of the laser	
-	 */
 	public void automaticMove () {
 		performMovement(dir);
 		if(isOut())
 			die();
-	}
-	
-	// PERFORM ATTACK METHODS	
-
-	private boolean isOut() {
-		//TODO fill your code
-		return false;
 	}
 
 	/**
@@ -145,9 +160,10 @@ public class UCMLaser {
 	 */
 	
 	public boolean performAttack(RegularAlien other) {
-		 int damage = 1; // Cantidad de daño que hace el láser al alien
-       		 alien.receiveAttack(damage); // Llama al método de recepción de ataque del RegularAlien
-       		 return true; // Devuelve true si el ataque tiene éxito
+		int damage = 1; // Cantidad de daño que hace el láser al alien
+		alien.receiveAttack(damage); // Llama al método de recepción de ataque del RegularAlien
+		return true; // Devuelve true si el ataque tiene éxito
+
 	}
 
 	/**
@@ -160,14 +176,10 @@ public class UCMLaser {
 
 	
 	public boolean performAttack(DestroyerAlien other) {
-		int damage = 2; // Cantidad de daño que hace el láser al destroyer alien
-        	alien.receiveAttack(damage); // Llama al método de recepción de ataque del DestroyerAlien
-        	return true; // Devuelve true si el ataque tiene éxito
+		int damage = 1; // Cantidad de daño que hace el láser al alien
+		alien.receiveAttack(damage); // Llama al método de recepción de ataque del RegularAlien
+		return true; // Devuelve true si el ataque tiene éxito
 	}
-	
-	
-	//TODO fill your code
-
 
 	//ACTUAL ATTACK METHODS
 	
@@ -191,10 +203,6 @@ public class UCMLaser {
 	 * @param weapon the received bomb
 	 * @return always returns <code>true</code>
 	 */	
-
-	public void receiveDamage() {
-		//TODO no estoy seguro de qué hay que hacer con este método pero parece necesario
-	}
 
 	public boolean receiveAttack(Bomb weapon) {
 		//receiveDamage(weapon.getDamage());

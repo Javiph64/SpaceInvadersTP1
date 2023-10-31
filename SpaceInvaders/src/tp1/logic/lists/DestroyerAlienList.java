@@ -89,16 +89,14 @@ public class DestroyerAlienList {
 	}
 	
 	public void computerActions() {
-		for (DestroyerAlien destroyerAlien : this.destroyerAliens) {
-
-           	 // Por ejemplo, decidimos lanzar una bomba de manera aleatoria
-           	 boolean shouldLaunchBomb = Math.random() < 0.2; // Probabilidad del 20%
-
-           		 if (shouldLaunchBomb) {
-               		 // Realiza la acción de lanzar una bomba
-               		 destroyerAlien.launchBomb(); // Esto podría agregar la bomba a una lista de bombas pendientes
-           		 }
-       		 }
+		for(DestroyerAlien destroyerAlien : this.destroyerAliens()){
+			// Por ejemplo, decidimos lanzar una bomba de manera aleatoria
+			boolean shouldLaunchBomb = Math.random() < 0.2; // Probabilidad del 20%
+			if(shouldLaunchBomb) {
+				// Realizar la acción de lanzar una bombda
+				destroyerAlien.launchBomb(); // Esto podría arreglar la bomba a una lista de bombas pendientes
+			}
+		}
 	}
 	
 	public void automaticActions() {
@@ -127,6 +125,5 @@ public class DestroyerAlienList {
 			objects[i] = alien;
 		}
 	}
-
 
 }
