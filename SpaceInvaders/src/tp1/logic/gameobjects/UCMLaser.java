@@ -56,17 +56,6 @@ public class UCMLaser {
 	
 	private void die() {
 		this.alive = false;
-	}
-	
-	public Move getDir() {
-		return this.dir;
-	}
-	
-	public void performMovement(Move move) {
-		this.dir = move;
-		int x = move.getX();
-		int y = move.getY();
-		this.setPosition(this.getPosition().getCol() + x, this.getPosition().getRow() + y);
 	}	
 
 	public boolean getEnable() {
@@ -161,7 +150,7 @@ public class UCMLaser {
 	
 	public boolean performAttack(RegularAlien other) {
 		int damage = 1; // Cantidad de daño que hace el láser al alien
-		alien.receiveAttack(damage); // Llama al método de recepción de ataque del RegularAlien
+		//alien.receiveAttack(damage); // Llama al método de recepción de ataque del RegularAlien
 		return true; // Devuelve true si el ataque tiene éxito
 
 	}
@@ -177,7 +166,7 @@ public class UCMLaser {
 	
 	public boolean performAttack(DestroyerAlien other) {
 		int damage = 1; // Cantidad de daño que hace el láser al alien
-		alien.receiveAttack(damage); // Llama al método de recepción de ataque del RegularAlien
+		//alien.receiveAttack(damage); // Llama al método de recepción de ataque del RegularAlien
 		return true; // Devuelve true si el ataque tiene éxito
 	}
 

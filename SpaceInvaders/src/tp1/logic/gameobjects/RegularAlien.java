@@ -226,7 +226,7 @@ public class RegularAlien {
 
 		if (!isAlive()) {
             		// Notificar la eliminación al AlienManager para actualizar el contador
-            		AlienManager.notifyAlienDestroyed(this);
+            		//AlienManager.notifyAlienDestroyed(this);
         	}
 	}
 	

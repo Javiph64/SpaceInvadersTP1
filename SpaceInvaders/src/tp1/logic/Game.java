@@ -198,6 +198,7 @@ public class Game {
 		this.ufoFrecuency = ufoFrecuency;
 	}
 	
+	/*
 	public void getCol() {
 		return this.board[][];
 	}
@@ -206,6 +207,7 @@ public class Game {
 		Position pos = new Position(this.board[x][], this.board[][y]);
 		return pos;
 	}
+	*/
 	
 	// otros métodos
 	
@@ -217,7 +219,7 @@ public class Game {
         	computerActions();
 
        		// Mover automáticamente las naves alienígenas
-        	automaticMoves();
+        	//automaticMoves();
 
         	// Realizar otras actualizaciones necesarias
         	// Por ejemplo, actualizar las bombas y el láser
@@ -242,7 +244,7 @@ public class Game {
 	}
 	
 	public void addBomb(Bomb bomb) {
-		bombList.add(bomb);
+		//bombList.add(bomb);
 
 	}
 	
@@ -286,11 +288,6 @@ public class Game {
 	
 	private void laserAutomaticMove() {
 		//TODO
-	}
-	
-	public void exit() {
-		doExit = true;
-
 	}
 	
 	public String infoToString() {
