@@ -92,8 +92,7 @@ public class UCMShip {
 	
 	public void setPosition(Position pos) {
 		this.pos = pos;
-	}
-	
+	}	
 
 	public void setPosition(int x, int y) {
 		this.pos.setCol(x);

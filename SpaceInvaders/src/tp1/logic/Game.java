@@ -47,8 +47,8 @@ public class Game {
 			this.shootFrecuency = 0.1;
 			this.player.setSpeed(3);
 			this.ufoFrecuency = 0.5;
-			RegularAlienList regularAliens = new RegularAlienList(regularAliensNum, limit);
-			DestroyerAlienList destroyerAliens = new DestroyerAlienList(destroyerAliensNum, limit);
+			RegularAlienList regularAliens = new RegularAlienList(this, this.alienManager, regularAliensNum, limit);
+			DestroyerAlienList destroyerAliens = new DestroyerAlienList(this, this.alienManager, destroyerAliensNum, limit);
 			this.regularAliens = regularAliens;
 			regularAliens.initRegularAlienList();
 			this.destroyerAliens = destroyerAliens;
@@ -61,8 +61,8 @@ public class Game {
 			this.shootFrecuency = 0.3;
 			this.player.setSpeed(2);
 			this.ufoFrecuency = 0.2;
-			RegularAlienList regularAliens = new RegularAlienList(regularAliensNum, limit);
-			DestroyerAlienList destroyerAliens = new DestroyerAlienList(destroyerAliensNum, limit);
+			RegularAlienList regularAliens = new RegularAlienList(this, this.alienManager, regularAliensNum, limit);
+			DestroyerAlienList destroyerAliens = new DestroyerAlienList(this, this.alienManager, destroyerAliensNum, limit);
 			this.regularAliens = regularAliens;
 			regularAliens.initRegularAlienList();
 			this.destroyerAliens = destroyerAliens;
@@ -75,8 +75,8 @@ public class Game {
 			this.shootFrecuency = 0.1;
 			this.player.setSpeed(1);
 			this.ufoFrecuency = 0.1;
-			RegularAlienList regularAliens = new RegularAlienList(regularAliensNum, limit);
-			DestroyerAlienList destroyerAliens = new DestroyerAlienList(destroyerAliensNum, limit);
+			RegularAlienList regularAliens = new RegularAlienList(this, this.alienManager, regularAliensNum, limit);
+			DestroyerAlienList destroyerAliens = new DestroyerAlienList(this, this.alienManager, destroyerAliensNum, limit);
 			this.regularAliens = regularAliens;
 			regularAliens.initRegularAlienList();
 			this.destroyerAliens = destroyerAliens;

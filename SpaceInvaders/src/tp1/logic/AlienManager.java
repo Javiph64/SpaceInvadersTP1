@@ -85,12 +85,12 @@ public class AlienManager {
 		if(this.level == Level.EASY) {
 			regularAliensNum = 4;
 			limit = 4;
-			regularAliens = new RegularAlienList(regularAliensNum, limit);
+			regularAliens = new RegularAlienList(this.game, this, regularAliensNum, limit);
 		}
 		else if(this.level == Level.HARD || this.level == Level.INSANE){
 			regularAliensNum = 8;
 			limit = 8;
-			regularAliens = new RegularAlienList(regularAliensNum, limit);
+			regularAliens = new RegularAlienList(this.game, this, regularAliensNum, limit);
 		}
 		return regularAliens;
 	}
@@ -102,12 +102,12 @@ public class AlienManager {
 		if(this.level == Level.EASY || this.level == Level.HARD) {
 			destroyerAliensNum = 2;
 			limit = 2;
-			destroyerAliens = new DestroyerAlienList(destroyerAliensNum, limit);
+			destroyerAliens = new DestroyerAlienList(this.game, this, destroyerAliensNum, limit);
 		}
 		else if(this.level == Level.INSANE){
 			destroyerAliensNum = 4;
 			limit = 4;
-			destroyerAliens = new DestroyerAlienList(destroyerAliensNum, limit);
+			destroyerAliens = new DestroyerAlienList(this.game, this, destroyerAliensNum, limit);
 		}
 		return destroyerAliens;
 	}
