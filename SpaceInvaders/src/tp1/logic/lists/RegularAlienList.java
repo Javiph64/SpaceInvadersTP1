@@ -2,6 +2,8 @@ package tp1.logic.lists;
 
 import tp1.logic.Position;
 import tp1.logic.gameobjects.RegularAlien;
+import tp1.logic.Game;
+import tp1.logic.AlienManager;
 
 public class RegularAlienList {
 	
@@ -10,16 +12,24 @@ public class RegularAlienList {
 	private RegularAlien[] objects;
 	private int num;
 	private int limit;
+	private Game game;
+	private AlienManager alienManager;
 	
 	// constructor
 	
-	public RegularAlienList(int num, int limit) {
+	public RegularAlienList(Game game, AlienManager alienManager, int num, int limit) {
+		this.game = game;
+		this.alienManager = alienManager;
 		this.objects = new RegularAlien[num];
 		this.num = num;
 		this.limit = limit;
 	}
 	
 	// getters y setters
+	
+	public RegularAlien[] getObjects() {
+		return this.objects;
+	}
 	
 	public int getNum() {
 		return this.num;
@@ -37,7 +47,22 @@ public class RegularAlienList {
 		this.limit = limit;
 	}
 	
+	public Game getGame() {
+		return this.game;
+	}
+	
+	public AlienManager getAlienManager() {
+		return this.alienManager;
+	}
+	
 	// otros métodos
+	
+	public void initRegularAlienList() {
+		for(int i = 0; i < num; i++) {
+			RegularAlien alien = new RegularAlien(this.game, this.alienManager);
+			objects[i] = alien;
+		}
+	}
 	
 	public void add(RegularAlien alien, int limit) {
 		if(this.num < limit) {
@@ -88,6 +113,7 @@ public class RegularAlienList {
 	}
 	
 	public void computerActions() {
+		/*
 		for(RegularAlien regularAlien : this.regularAliens) {
 			// Por ejemplo, decidir si debe disparar (atacar) de manera aleatoria
 			boolean shouldShoot = Math.random() < 0.1; // Probabilidad del 10%
@@ -96,6 +122,7 @@ public class RegularAlienList {
 				regularAlien.Shoot(); // Esto podría agregar un disparo a una lista de disparos pendientes
 			}
 		}
+		*/
 	}
 	
 	public void automaticActions() {
@@ -116,13 +143,6 @@ public class RegularAlienList {
 	
 	public void checkAttacks() {
 		//TODO
-	}
-	
-	public void initRegularAlienList() {
-		for(int i = 0; i < num; i++) {
-			RegularAlien alien = new RegularAlien();
-			objects[i] = alien;
-		}
 	}
 
 }

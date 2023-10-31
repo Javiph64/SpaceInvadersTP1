@@ -2,7 +2,8 @@ package tp1.logic.lists;
 
 import tp1.logic.Position;
 import tp1.logic.gameobjects.DestroyerAlien;
-import tp1.logic.gameobjects.RegularAlien;
+import tp1.logic.Game;
+import tp1.logic.AlienManager;
 
 public class DestroyerAlienList {
 	
@@ -11,16 +12,24 @@ public class DestroyerAlienList {
 	private DestroyerAlien[] objects;
 	private int num;
 	private int limit;
+	private Game game;
+	private AlienManager alienManager;
 	
 	// constructor
 	
-	public DestroyerAlienList(int num, int limit) {
+	public DestroyerAlienList(Game game, AlienManager alienManager, int num, int limit) {
+		this.game = game;
+		this.alienManager = alienManager;
 		this.objects = new DestroyerAlien[num];
 		this.num = num;
 		this.limit = limit;
 	}
 	
 	// getters y setters
+	
+	public DestroyerAlien[] getObjects() {
+		return this.objects;
+	}
 	
 	public int getNum() {
 		return this.num;
@@ -38,7 +47,22 @@ public class DestroyerAlienList {
 		this.limit = limit;
 	}
 	
+	public Game getGame() {
+		return this.game;
+	}
+	
+	public AlienManager getAlienManager() {
+		return this.alienManager;
+	}
+	
 	// otros métodos
+	
+	public void initDestroyerAlienList() {
+		for(int i = 0; i < num; i++) {
+			DestroyerAlien alien = new DestroyerAlien(this.game, this.alienManager);
+			objects[i] = alien;
+		}
+	}
 	
 	public void add(DestroyerAlien alien, int limit) {
 		if(this.num < limit) {
@@ -89,6 +113,7 @@ public class DestroyerAlienList {
 	}
 	
 	public void computerActions() {
+		/*
 		for(DestroyerAlien destroyerAlien : this.destroyerAliens()){
 			// Por ejemplo, decidimos lanzar una bomba de manera aleatoria
 			boolean shouldLaunchBomb = Math.random() < 0.2; // Probabilidad del 20%
@@ -97,6 +122,7 @@ public class DestroyerAlienList {
 				destroyerAlien.launchBomb(); // Esto podría arreglar la bomba a una lista de bombas pendientes
 			}
 		}
+		*/
 	}
 	
 	public void automaticActions() {
@@ -104,6 +130,7 @@ public class DestroyerAlienList {
 	}
 	
 	// revisar este método
+	
 	public void removeDead() {
 		for(int i = 0; i < num; i++) {
 			if(!objects[i].isAlive()) {
@@ -117,13 +144,6 @@ public class DestroyerAlienList {
 	
 	public void checkAttacks() {
 		//TODO
-	}
-	
-	public void initDestroyerAlienList() {
-		for(int i = 0; i < num; i++) {
-			DestroyerAlien alien = new DestroyerAlien();
-			objects[i] = alien;
-		}
 	}
 
 }

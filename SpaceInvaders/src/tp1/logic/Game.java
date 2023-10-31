@@ -47,8 +47,8 @@ public class Game {
 			this.shootFrecuency = 0.1;
 			this.player.setSpeed(3);
 			this.ufoFrecuency = 0.5;
-			RegularAlienList regularAliens = new RegularAlienList(regularAliensNum, limit);
-			DestroyerAlienList destroyerAliens = new DestroyerAlienList(destroyerAliensNum, limit);
+			RegularAlienList regularAliens = new RegularAlienList(this, this.alienManager, regularAliensNum, limit);
+			DestroyerAlienList destroyerAliens = new DestroyerAlienList(this, this.alienManager, destroyerAliensNum, limit);
 			this.regularAliens = regularAliens;
 			regularAliens.initRegularAlienList();
 			this.destroyerAliens = destroyerAliens;
@@ -61,8 +61,8 @@ public class Game {
 			this.shootFrecuency = 0.3;
 			this.player.setSpeed(2);
 			this.ufoFrecuency = 0.2;
-			RegularAlienList regularAliens = new RegularAlienList(regularAliensNum, limit);
-			DestroyerAlienList destroyerAliens = new DestroyerAlienList(destroyerAliensNum, limit);
+			RegularAlienList regularAliens = new RegularAlienList(this, this.alienManager, regularAliensNum, limit);
+			DestroyerAlienList destroyerAliens = new DestroyerAlienList(this, this.alienManager, destroyerAliensNum, limit);
 			this.regularAliens = regularAliens;
 			regularAliens.initRegularAlienList();
 			this.destroyerAliens = destroyerAliens;
@@ -75,8 +75,8 @@ public class Game {
 			this.shootFrecuency = 0.1;
 			this.player.setSpeed(1);
 			this.ufoFrecuency = 0.1;
-			RegularAlienList regularAliens = new RegularAlienList(regularAliensNum, limit);
-			DestroyerAlienList destroyerAliens = new DestroyerAlienList(destroyerAliensNum, limit);
+			RegularAlienList regularAliens = new RegularAlienList(this, this.alienManager, regularAliensNum, limit);
+			DestroyerAlienList destroyerAliens = new DestroyerAlienList(this, this.alienManager, destroyerAliensNum, limit);
 			this.regularAliens = regularAliens;
 			regularAliens.initRegularAlienList();
 			this.destroyerAliens = destroyerAliens;
@@ -198,6 +198,7 @@ public class Game {
 		this.ufoFrecuency = ufoFrecuency;
 	}
 	
+	/*
 	public void getCol() {
 		return this.board[][];
 	}
@@ -206,6 +207,7 @@ public class Game {
 		Position pos = new Position(this.board[x][], this.board[][y]);
 		return pos;
 	}
+	*/
 	
 	// otros métodos
 	
@@ -217,7 +219,7 @@ public class Game {
         	computerActions();
 
        		// Mover automáticamente las naves alienígenas
-        	automaticMoves();
+        	//automaticMoves();
 
         	// Realizar otras actualizaciones necesarias
         	// Por ejemplo, actualizar las bombas y el láser
@@ -242,7 +244,7 @@ public class Game {
 	}
 	
 	public void addBomb(Bomb bomb) {
-		bombList.add(bomb);
+		//bombList.add(bomb);
 
 	}
 	
@@ -286,11 +288,6 @@ public class Game {
 	
 	private void laserAutomaticMove() {
 		//TODO
-	}
-	
-	public void exit() {
-		doExit = true;
-
 	}
 	
 	public String infoToString() {

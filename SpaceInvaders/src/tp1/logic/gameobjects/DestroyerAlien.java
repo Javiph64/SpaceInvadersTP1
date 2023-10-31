@@ -11,40 +11,25 @@ public class DestroyerAlien {
 	
 	private static final int ARMOR = 1;
 	
-	private Position pos;
-	private int life;
-	private Game game;
-	private int cyclesToMove;
-	private boolean canShoot;
+	private int life = ARMOR;
 	private int speed;
-	private Move dir;		
+	private int cyclesToMove;
+	private boolean alive = true;
+	private boolean canShoot = true;
+	private String symbol = "D";
+	private Game game;
+	private Position pos;
 	private AlienManager alienManager;
-	private boolean alive;
-	private String symbol;
+	private Move dir;	
 	
 	// constructor
 	
-	public DestroyerAlien() {
-		this.life = ARMOR;
-		this.dir = Move.NONE;
-		this.alive = true;
-		this.symbol = "D";
+	public DestroyerAlien(Game game, AlienManager alienManager) {
+		this.game = game;
+		this.alienManager = alienManager;
 	}
 	
 	// getters y setters
-	
-	public Position getPosition() {
-		return this.pos;
-	}
-	
-	public void setPosition(Position pos) {
-		this.pos = pos;
-	}
-	
-	public void setPosition(int x, int y) {
-		this.pos.setCol(x);
-		this.pos.setRow(y);
-	}
 	
 	public int getLife() {
 		return this.life;
@@ -52,18 +37,6 @@ public class DestroyerAlien {
 
 	public void setLife(int life) {
 		this.life = life;
-	}
-	
-	public Game getGame() {
-		return this.game;
-	}
-	
-	public int getCyclesToMove() {
-		return this.cyclesToMove;
-	}
-	
-	public void setCyclesToMove(int cycles) {
-		this.cyclesToMove = cycles;
 	}
 	
 	public int getSpeed() {
@@ -74,36 +47,20 @@ public class DestroyerAlien {
 		this.speed = speed;
 	}
 	
+	public int getCyclesToMove() {
+		return this.cyclesToMove;
+	}
+	
+	public void setCyclesToMove(int cycles) {
+		this.cyclesToMove = cycles;
+	}
+	
 	public boolean isAlive() {
 		return this.alive;
 	}
 	
 	public void die() {
 		this.alive = false;
-	}
-	
-	public Move getDir() {
-		return this.dir;
-	}
-	
-	public void performMovement(Move move) {
-		this.dir = move;
-		int x = move.getX();
-		int y = move.getY();
-		this.setPosition(this.getPosition().getCol() + x, this.getPosition().getRow() + y);
-	}
-	
-	public AlienManager getAlienManager() {
-		return this.alienManager;
-	}
-	
-	private String getSymbol() {
-		return this.symbol;
-	}
-	
-	@Override
-	public String toString() {
-		return this.getSymbol() + "[0" + this.getLife() + "]";
 	}
 	
 	public boolean canShoot() {
@@ -118,15 +75,41 @@ public class DestroyerAlien {
 		this.canShoot = false;
 	}
 	
-	// otros métodos
-	
-	public void increaseCycle() {
-		this.cyclesToMove++;
+	private String getSymbol() {
+		return this.symbol;
 	}
 	
-	public void decreaseCycle() {
-		this.cyclesToMove--;
+	@Override
+	public String toString() {
+		return this.getSymbol() + "[0" + this.getLife() + "]";
 	}
+	
+	public Game getGame() {
+		return this.game;
+	}	
+	
+	public Position getPosition() {
+		return this.pos;
+	}
+	
+	public void setPosition(Position pos) {
+		this.pos = pos;
+	}
+	
+	public void setPosition(int x, int y) {
+		this.pos.setCol(x);
+		this.pos.setRow(y);
+	}
+	
+	public AlienManager getAlienManager() {
+		return this.alienManager;
+	}	
+	
+	public Move getDir() {
+		return this.dir;
+	}
+		
+	// otros métodos	
 	
 	public boolean isOnPosition(Position pos) {
 		return this.pos == pos;
@@ -144,18 +127,29 @@ public class DestroyerAlien {
 	}
 	
 	public boolean isOut() {
-		//TODO
-		return false;
-	}
+		if((this.getPosition().getCol() < 0 || this.getPosition().getCol() > 7) || 
+				(this.getPosition().getRow() < 0 || this.getPosition().getRow() > 8)) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}	
 	
 	public boolean isInFinalRow() {
-		//TODO
-		return false;
+		return this.getPosition().getRow() == 8;
+	}
+	
+	public void performMovement(Move move) {
+		this.dir = move;
+		int x = move.getX();
+		int y = move.getY();
+		this.setPosition(this.getPosition().getCol() + x, this.getPosition().getRow() + y);
 	}	
 	
 	public String getInfo() {
-		//TODO
-		return null;
+		String info = "Col: " + this.getPosition().getCol() + " Row: " + this.getPosition().getRow();
+		return info;
 	}
 	
 	private String getDescription() {
@@ -164,8 +158,20 @@ public class DestroyerAlien {
 	}
 	
 	public int getDamage() {
-		//TODO
-		return 0;
+		if(this.life == ARMOR) {
+			return 0;
+		}
+		else {
+			return ARMOR - this.life;
+		}
+	}
+	
+	public void increaseCycle() {
+		this.cyclesToMove++;
+	}
+	
+	public void decreaseCycle() {
+		this.cyclesToMove--;
 	}
 	
 	public void computerAction(Game game) {

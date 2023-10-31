@@ -57,10 +57,6 @@ public class UCMShip {
 		this.speed = speed;
 	}
 	
-	public void setLaser(UCMLaser laser) {
-		this.laser = laser;
-	}
-	
 	public boolean canShoot() {
 		return this.canShoot;
 	}
@@ -96,21 +92,12 @@ public class UCMShip {
 	
 	public void setPosition(Position pos) {
 		this.pos = pos;
-	}
-	
+	}	
 
 	public void setPosition(int x, int y) {
 		this.pos.setCol(x);
 		this.pos.setRow(y);
 	}	
-
-	public void performMovement(Move move) {
-		this.dir = move;
-		int x = move.getX();
-		int y = move.getY();
-		this.setPosition(this.getPosition().getCol() + x, this.getPosition().getRow() + y);
-	}
-
 	
 	public UCMLaser getLaser() {
 		return this.laser;
