@@ -132,8 +132,7 @@ public class Game {
 	}
 
 	public String positionToString(int col, int row) {
-		//TODO fill your code
-		return null;
+		return "Position: " + this.DIM_X + this.DIM_Y;
 	}
 
 	public boolean playerWin() {
@@ -245,7 +244,6 @@ public class Game {
 	
 	public void addBomb(Bomb bomb) {
 		//bombList.add(bomb);
-
 	}
 	
 	public String positionToString() {
